@@ -11,6 +11,18 @@
     "targets": ["Airtable", "GitHub"],
     "issue_policy": "log immediately, adjudicate after database body is complete",
     "privacy_policy": "public GitHub receives de-identified technical content only",
-    "background_monitoring": false
-  }
+    "background_monitoring": false,
+    "interaction_retrieval": "retrieve broadly, write conservatively; retrieval does not persist; context-escape uses internal and external sources symmetrically"
+  },
+  "github_side_nodes_not_airtable_ids": {
+    "note": "These are GitHub-side node labels only. They are not Airtable SRC-* assignments.",
+    "omniverse_hub": "knowledge/omniverse-research-index.md",
+    "deep_dives": [
+      "GH-DD-PHYSX",
+      "GH-DD-AV-SIM",
+      "GH-DD-SMART-CITIES",
+      "GH-SRC-YT-XeHtw36h-eI"
+    ]
+  },
+  "interaction_rules_mirrored": ["INT-0001", "INT-0002", "INT-0003", "INT-0004", "INT-0005", "INT-0006", "INT-0007", "INT-0008"]
 }
