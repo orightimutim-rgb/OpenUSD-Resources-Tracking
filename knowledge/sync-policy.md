@@ -56,6 +56,8 @@ For recurring problem types such as missing sources, architecture gaps, duplicat
 - reuse prior decision rules when still applicable
 - create a new version when the new case conflicts with an older rule
 - retain the user's validation/correction as part of the rule history
+- do not create one Interaction record per correction; merge continuing corrections into the covering rule stream
+- a vendor developer portal that already exists as a source is an entry node; synchronize its first-level tree (Read / Partial / Pending) rather than treating a homepage summary as completion
 
 ## Conflict handling
 

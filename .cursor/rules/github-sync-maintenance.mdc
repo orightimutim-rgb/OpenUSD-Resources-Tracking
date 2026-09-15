@@ -52,6 +52,10 @@ Classify a discovered problem before editing:
 
 Make the smallest necessary edit. Do not create duplicate records when a relationship or architecture reference is the missing piece.
 
+Vendor developer portals that already exist as sources are **entry nodes**, not completion. Enumerate major first-level sections/links, compare each node against the source/architecture inventory before creating anything, and track Read / Partial / Pending. Do not mark the root fully learned while linked branches remain unread. Prefer a directory/relationship map over a landing-page summary so later turns can retrieve child URLs without the user re-feeding them.
+
+Continuing structural corrections in the same stream must not mint a new Interaction ID by default. Merge into INT-0001 / INT-0005 / INT-0006 / INT-0007 unless a genuinely new reusable decision pattern appears.
+
 ## Owner communication
 
 Use GitHub Issue #1 and related pull requests as the owner↔Cursor communication bridge.
