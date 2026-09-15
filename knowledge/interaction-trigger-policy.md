@@ -114,12 +114,15 @@ This is intended to produce layered learning history, not a flat chat log and no
 `incoming user message`
 → `trigger classification`
 → if triggered: `retrieve similar interaction rules`
+→ if a structural issue is present: `local forward-scan` of adjacent dependencies, likely downstream gaps, related Interaction rules, and maintenance implications
 → inspect relevant knowledge layers
 → form current judgment
-→ respond / act
+→ respond / act as one compact batch when confidence is sufficient; keep uncertain items as review candidates
 → inspect user feedback
 → decide `NO WRITE / UPDATE-VERSION / CREATE / REVIEW`
 → synchronize external stores when applicable
+
+Forward-scan and consolidation do not create Interaction records. Consolidation must not rewrite historical rules.
 
 ## Similarity-first rule
 
@@ -145,3 +148,22 @@ Every external mutation must still distinguish:
 ## Scope boundary
 
 This policy stores concise, reviewable decision summaries and criteria. It does not store hidden chain-of-thought and does not claim to modify model weights.
+
+## Local forward scan
+
+When a structural issue is detected, do not stop at that isolated symptom.
+
+Before responding:
+1. identify the current issue
+2. inspect adjacent dependencies and likely downstream gaps
+3. retrieve related Interaction rules
+4. return a compact combined recommendation
+5. separate confident actions from review candidates
+
+This step implements INT-0007 / `knowledge/interaction-optimization-policy.md`. It is not a new Stage 0 outcome and does not create a record by itself.
+
+## Periodic consolidation
+
+Because Interaction Learning is additive/versioned, periodic consolidation is required.
+
+Consolidation may detect near-duplicates, superseded rules, conflict clusters, stale response strategies, and merge candidates. It must emit a review report. It must not silently merge, delete, or rewrite historical rules. Uncertain consolidations are `APPROVAL REQUIRED`.

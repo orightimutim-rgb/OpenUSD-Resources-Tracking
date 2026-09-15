@@ -73,3 +73,14 @@ Scheduling cadence should be based on actual interaction volume:
 - high-change periods: more frequent review may be appropriate
 
 A scheduled task should not silently rewrite rules. It should produce a consolidation report and proposed merges/updates for review unless prior policy explicitly authorizes automatic low-risk maintenance.
+
+## 6. GitHub-side implementation
+
+Read-only helper: `scripts/interaction_trigger.py`
+
+- `forward-scan --event TEXT` retrieves related rules and adjacent maintenance gaps as one compact batch. It does not persist.
+- `consolidate` emits a review report for near-duplicates, related clusters, conflict clusters, stale strategies, and merge candidates. It does not merge, delete, or rewrite historical rules.
+
+Catalog: `knowledge/interaction-index.json`
+
+Uncertain consolidation items belong in a dated review file such as `knowledge/interaction-consolidation-review-YYYY-MM-DD.md` and, when approval-gated, on GitHub Issue #1 as `APPROVAL REQUIRED`.

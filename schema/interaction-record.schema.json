@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schema/interaction-record.schema.json",
+  "title": "Interaction Learning retrieval record",
+  "description": "Machine-readable retrieval catalog entry. Catalog lookup, forward-scan, and consolidation are not persist operations.",
+  "type": "object",
+  "required": ["id", "title", "status", "default_trigger_action", "tags", "reusable_rule"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^INT-[0-9]{4}$"},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"enum": ["ACTIVE_RULE", "HISTORICAL", "ISSUE"]},
+    "default_trigger_action": {
+      "enum": [
+        "NO_INTERACTION_ACTION",
+        "RETRIEVE_ONLY",
+        "UPDATE_EXISTING",
+        "CREATE_NEW",
+        "REVIEW_CONFLICT"
+      ]
+    },
+    "related_rules": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "problem_types": {"type": "array", "items": {"type": "string"}},
+    "prompt_patterns": {"type": "array", "items": {"type": "string"}},
+    "structural_signals": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Ordinary-language structural properties that should trigger retrieval even without technical vocabulary."
+    },
+    "tags": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "reusable_rule": {"type": "string"},
+    "response_strategy": {"type": "string"},
+    "versions": {
+      "type": "array",
+      "description": "Additive history. Newer notes append; they do not replace earlier states.",
+      "items": {
+        "type": "object",
+        "required": ["date", "note"],
+        "properties": {
+          "date": {"type": "string"},
+          "note": {"type": "string"}
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}
