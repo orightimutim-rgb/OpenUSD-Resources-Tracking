@@ -1,0 +1,34 @@
+---
+description: "Classify every meaningful maintenance event with the Interaction Trigger Policy and retrieve similar INT rules before any Interaction write. Do not log every event."
+alwaysApply: true
+---
+
+# Interaction Learning retrieval trigger
+
+Canonical spec: `knowledge/interaction-trigger-policy.md`
+
+Catalog: `knowledge/interaction-index.json`
+
+Rules: `knowledge/interaction-learning.md`
+
+Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
+
+## Required sequence
+
+1. Classify the event as one of:
+   - `NO_INTERACTION_ACTION`
+   - `RETRIEVE_ONLY`
+   - `UPDATE_EXISTING`
+   - `CREATE_NEW`
+   - `REVIEW_CONFLICT`
+2. If not `NO_INTERACTION_ACTION`, retrieve similar existing Interaction rules before deciding to write.
+3. Prefer retrieval-only or update/versioning. Create a new INT only for a genuinely new reusable decision pattern.
+4. If considering a write, run:
+
+```text
+python3 scripts/interaction_trigger.py decide --event "<summary>"
+```
+
+5. High-impact heuristic changes to the trigger policy need `APPROVAL REQUIRED` on GitHub Issue #1.
+
+Do not create an Interaction entry for every conversation or repository event.

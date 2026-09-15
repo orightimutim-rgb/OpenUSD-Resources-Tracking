@@ -1,0 +1,142 @@
+{
+  "sync_version": 1,
+  "canonical_policy": "knowledge/interaction-trigger-policy.md",
+  "human_readable_rules": "knowledge/interaction-learning.md",
+  "note": "Retrieval catalog for the Interaction Trigger Policy. This is not a second rule store. Update this file when an INT rule is created, versioned, or marked historical.",
+  "rules": [
+    {
+      "id": "INT-0001",
+      "title": "Detecting a missing architecture node",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0003"],
+      "problem_types": [
+        "missing architecture node",
+        "missing source",
+        "missing relationship",
+        "already-existing content"
+      ],
+      "prompt_patterns": [
+        "is something missing",
+        "should this have its own node",
+        "official page links to a component"
+      ],
+      "tags": [
+        "missing",
+        "architecture-node",
+        "source",
+        "relationship",
+        "physx",
+        "smallest-edit",
+        "duplicate-avoidance"
+      ],
+      "reusable_rule": "Distinguish missing source vs missing relationship vs missing architecture node vs already-existing content, then apply the smallest necessary update.",
+      "response_strategy": "Search Records, Sources, and Architecture References before creating anything new."
+    },
+    {
+      "id": "INT-0002",
+      "title": "Synchronization transparency",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0004", "INT-0005"],
+      "problem_types": [
+        "implied persistence",
+        "execution transparency",
+        "authorization boundary"
+      ],
+      "prompt_patterns": [
+        "was this saved",
+        "did you update Airtable",
+        "completed the sync"
+      ],
+      "tags": [
+        "synchronization",
+        "transparency",
+        "persistence-language",
+        "authorization",
+        "completed-claim"
+      ],
+      "reusable_rule": "Distinguish actually executed externally, planned only, not yet written, and waiting for authorization.",
+      "response_strategy": "Do not imply external persistence without actual tool execution."
+    },
+    {
+      "id": "INT-0003",
+      "title": "Duplicate detection when record number is forgotten",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0001", "INT-0005"],
+      "problem_types": [
+        "semantic duplicate",
+        "forgotten record number",
+        "near-duplicate interaction"
+      ],
+      "prompt_patterns": [
+        "I posted this before",
+        "not sure of the record number",
+        "is this a duplicate"
+      ],
+      "tags": [
+        "duplicate",
+        "forgotten-id",
+        "semantic-overlap",
+        "record-number"
+      ],
+      "reusable_rule": "Compare core propositions before creating a new record. If highly overlapping, preserve the canonical record.",
+      "response_strategy": "Create a duplicate relationship instead of incrementing a new ID."
+    },
+    {
+      "id": "INT-0004",
+      "title": "Assistant judgment as retrievable interaction data",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0005"],
+      "problem_types": [
+        "missing judgment layer",
+        "event log without decision basis",
+        "rule versioning"
+      ],
+      "prompt_patterns": [
+        "preserve the reasoning",
+        "make this reusable",
+        "what was the decision basis"
+      ],
+      "tags": [
+        "judgment-summary",
+        "retrieval",
+        "versioning",
+        "response-strategy",
+        "sync-checkpoint"
+      ],
+      "reusable_rule": "Store shareable judgment summaries and retrieve similar interaction rules before deciding. Version on conflict instead of overwriting.",
+      "response_strategy": "Retrieve similar rules first; keep public de-identified summaries only."
+    },
+    {
+      "id": "INT-0005",
+      "title": "Automatic interaction retrieval and write gating",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0004"],
+      "problem_types": [
+        "interaction treated as a passive log",
+        "write-every-event inflation",
+        "forgot to retrieve similar rules",
+        "trigger routing"
+      ],
+      "prompt_patterns": [
+        "automatic retrieval trigger",
+        "do not create an interaction for every event",
+        "classify first",
+        "retrieve similar existing rules"
+      ],
+      "tags": [
+        "trigger-router",
+        "retrieve-before-write",
+        "write-gate",
+        "no-log-every-event",
+        "classification"
+      ],
+      "reusable_rule": "Run the Trigger Router first. Retrieve similar rules before writing. Prefer update/versioning over CREATE_NEW. Write only when the write gate is satisfied.",
+      "response_strategy": "Classify each meaningful event; leave Interaction Learning unchanged unless a reusable rule must be created, versioned, or reviewed."
+    }
+  ]
+}

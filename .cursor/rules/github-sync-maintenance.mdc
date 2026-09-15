@@ -23,6 +23,15 @@ Allowed outcomes:
 
 Do not create a new Interaction entry by default. Prefer retrieval-only when an existing rule already covers the case. Prefer update/versioning over creating near-duplicate Interaction entries.
 
+Required sequence:
+1. Read `knowledge/interaction-trigger-policy.md`.
+2. Classify the maintenance event.
+3. If the outcome is not `NO_INTERACTION_ACTION`, retrieve similar rules from `knowledge/interaction-index.json` and `knowledge/interaction-learning.md` before acting.
+4. If an Interaction write is being considered, run `python3 scripts/interaction_trigger.py decide --event "<summary>"` and inspect the matches first.
+5. Write Interaction Learning only when the write gate in the trigger policy is satisfied.
+
+High-impact changes to trigger heuristics require `APPROVAL REQUIRED` on GitHub Issue #1.
+
 ## Responsibilities
 
 Maintain GitHub-side work so ChatGPT does not need to spend conversational effort on routine repository maintenance.
