@@ -78,3 +78,35 @@ Sync checkpoint:
 - In-conversation synchronization is active; unattended background monitoring is not.
 
 Status: ACTIVE_RULE
+
+## INT-0005 — Automatic interaction retrieval and write gating
+
+Problem detection logic:
+- The user identified that having an Interaction Learning table is not enough if retrieval depends on the assistant manually remembering to query it.
+- The system needs a pre-response trigger that decides whether to retrieve, reuse, update, create, or leave Interaction Learning unchanged.
+
+User requirement:
+- Do not create an Interaction record for every message.
+- Automatically determine, from the current turn and conversation structure, whether an existing Interaction should be retrieved, updated, edited, versioned, or whether no write is needed.
+
+Assistant judgment summary:
+- The missing component is a routing layer, not another storage layer.
+- Interaction Learning should be downstream of a trigger classifier.
+- Retrieval should be broad enough to catch recurring workflow patterns, while writing should be gated to prevent chat-log inflation.
+
+Reusable rule:
+- Run the Trigger Router first.
+- Possible outcomes: NO_INTERACTION_ACTION / RETRIEVE_ONLY / UPDATE_EXISTING / CREATE_NEW / REVIEW_CONFLICT.
+- Prefer retrieval without writing when the current case is already covered.
+- Prefer updating/versioning an existing Interaction over creating a near-duplicate.
+- Create a new Interaction only when a genuinely new reusable decision pattern appears.
+
+Response strategy:
+- For each meaningful turn, classify whether prior interaction logic can materially change the response.
+- If yes, retrieve similar interaction rules before acting.
+- After the action and user feedback, decide whether the interaction database should remain unchanged, update an existing rule, create a new rule, or open a conflict review.
+
+Implementation reference:
+- See `knowledge/interaction-trigger-policy.md`.
+
+Status: ACTIVE_RULE
