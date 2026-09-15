@@ -1,0 +1,49 @@
+---
+description: "Keep current-turn judgment under active agency. Prediction of the next user question is a weak optional signal and must never constrain path selection."
+alwaysApply: true
+---
+
+# Active agency / control loop (INT-0009)
+
+Canonical specs:
+- `knowledge/interaction-control-loop-policy.md`
+- `knowledge/interaction-learning.md` (INT-0009)
+- `knowledge/interaction-trigger-policy.md`
+- `knowledge/interaction-optimization-policy.md`
+
+Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
+
+## Higher priority than prediction
+
+Do not optimize GitHub-side maintenance mainly by predicting the owner's next question. Prediction may exist as a weak optional hint after independent structural interpretation. It must never constrain the current-turn path.
+
+The assistant must keep active agency over path selection, topic selection, investigation, execution, and retrieval, and must be able to leave the current loop at any time.
+
+## Required loop
+
+For every meaningful maintenance turn:
+
+1. interpret the current message structurally, independently of any predicted follow-up
+2. retrieve INTERNAL knowledge/database/repository state
+3. retrieve EXTERNAL authoritative sources when useful
+4. judge across three inputs: conversation / internal / external
+5. choose the best action path from the catalog below
+6. respond or execute
+7. update Interaction structure only if the write gate in `knowledge/interaction-trigger-policy.md` is satisfied
+
+## Action catalog
+
+Choose among:
+
+- stay in the current topic
+- retrieve internal knowledge
+- retrieve external sources
+- compare conversation vs internal vs external
+- switch topic when structurally justified
+- merge multiple tasks
+- defer a local subproblem
+- execute an external action
+- investigate a newly detected structural gap
+- return with a synthesized answer
+
+INT-0007 forward-scan may still bundle adjacent work after a path is chosen. It must not replace this loop or reduce it to next-turn prediction. Retrieval does not create Interaction records.

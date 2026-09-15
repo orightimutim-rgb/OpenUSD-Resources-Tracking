@@ -23,6 +23,21 @@ Allowed outcomes:
 
 Do not create a new Interaction entry by default. Prefer retrieval-only when an existing rule already covers the case. Prefer update/versioning over creating near-duplicate Interaction entries.
 
+## Active agency / control loop
+
+Do not optimize maintenance mainly by predicting the owner's next question. Prediction is a weak optional signal after independent structural interpretation and must never constrain the current-turn path.
+
+For every meaningful turn:
+1. interpret the current message structurally
+2. retrieve INTERNAL repository/knowledge state
+3. retrieve EXTERNAL authoritative sources when useful
+4. judge across conversation / internal / external
+5. choose among stay / retrieve / compare / switch / merge / defer / execute / investigate / synthesize
+6. respond or execute
+7. update Interaction structure only if the write gate is satisfied
+
+Keep active agency over path, topic, investigation, execution, and retrieval. Leaving the current loop is always available. INT-0009 is higher priority than INT-0007 proactive prediction / next-question compression. Retrieval must not create an Interaction record.
+
 ## Responsibilities
 
 Maintain GitHub-side work so ChatGPT does not need to spend conversational effort on routine repository maintenance.
