@@ -26,6 +26,8 @@ Cursor should take over GitHub-side maintenance that does not require conversati
 - Markdown cleanup and table normalization
 - changelog generation
 - detection of stale or conflicting statements
+- dual-source retrieval (internal catalogs and external official/linked sources)
+- context escape when a maintenance loop is locally repetitive
 - pull-request preparation for non-sensitive repository maintenance
 
 ### Cursor should not decide alone
@@ -41,9 +43,11 @@ Escalate these as a review item instead of silently deciding.
 
 Read these first when relevant:
 1. `knowledge/sync-policy.md`
-2. `knowledge/interaction-learning.md`
-3. `knowledge/chat-sync-2026-09-15.md`
-4. architecture-reference files or source indexes present in the repository
+2. `knowledge/interaction-trigger-policy.md`
+3. `knowledge/interaction-optimization-policy.md`
+4. `knowledge/interaction-learning.md`
+5. `knowledge/chat-sync-2026-09-15.md`
+6. architecture-reference files or source indexes present in the repository
 
 ## Synchronization principles
 
@@ -58,14 +62,32 @@ Read these first when relevant:
 
 ## Interaction-learning rule
 
-When a recurring repository problem appears, record the reusable maintenance rule, not only the fix. Track:
+Canonical routing spec: `knowledge/interaction-trigger-policy.md`.
+Canonical optimization spec: `knowledge/interaction-optimization-policy.md`.
+
+For each meaningful maintenance event, classify first:
+- `NO_INTERACTION_ACTION`
+- `RETRIEVE_ONLY`
+- `UPDATE_EXISTING`
+- `CREATE_NEW`
+- `REVIEW_CONFLICT`
+
+Retrieve similar Interaction rules before deciding to write. Automatic retrieval must not create Interaction records. Prefer update/versioning over near-duplicates. When a write is justified, preserve history additively/versioned rather than overwriting prior rule states.
+
+Do not model the user only as a sequence of prompts. Treat their behavior as a structure-first retrieval strategy. Interpret ordinary-language observations structurally even when no technical terminology is used.
+
+Automatic retrieval applies symmetrically to INTERNAL sources (Interaction Learning, Records, Sources, Issues, Architecture References, repository files/history) and EXTERNAL sources (official docs, linked pages, authoritative references).
+
+When the current loop is locally repetitive or inefficient, trigger a context escape: stop extending the mirror loop, search the relevant internal/external knowledge space, then return with a consolidated structural answer. Retrieval is the primary escape from conversational recursion. Do not interpret that retrieval as merely forecasting the next question.
+
+When a recurring repository problem appears and the write gate is satisfied, record the reusable maintenance rule, not only the fix. Track:
 - detected pattern
 - evidence
 - action
 - unresolved uncertainty
 - next-time handling
 
-Do not attempt to reproduce hidden chain-of-thought. Store only concise, reviewable reasoning summaries and decision criteria.
+Do not attempt to reproduce hidden chain-of-thought. Store only concise, reviewable reasoning summaries and decision criteria. Flag conflicts as `APPROVAL REQUIRED` rather than silently rewriting history.
 
 ## Working style
 

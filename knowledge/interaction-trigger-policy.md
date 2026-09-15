@@ -81,6 +81,8 @@ Retrieve Interaction Learning before responding when one or more of these are pr
 7. a new source appears structurally important and may require source / relationship / architecture-node classification
 8. there is a risk of creating duplicate Records / Sources / Architecture References / Interaction records
 9. the user identifies a structural relationship in plain language even without technical terminology
+10. the current conversation is locally repetitive, circling, or only extending the current mirror loop (context escape; INT-0008)
+11. a structural question requires INTERNAL and EXTERNAL sources together, not chat continuation alone
 
 ## Interaction write gate
 
@@ -114,12 +116,61 @@ This is intended to produce layered learning history, not a flat chat log and no
 `incoming user message`
 → `trigger classification`
 → if triggered: `retrieve similar interaction rules`
+→ if the local conversation is repetitive or inefficient: `context escape` (stop extending the mirror loop; retrieve INTERNAL and EXTERNAL sources; return a consolidated structural answer)
 → inspect relevant knowledge layers
 → form current judgment
 → respond / act
 → inspect user feedback
 → decide `NO WRITE / UPDATE-VERSION / CREATE / REVIEW`
 → synchronize external stores when applicable
+
+Context escape and retrieval do not create Interaction records. Extending a locally inefficient loop is not an acceptable substitute for retrieval.
+
+## Symmetric retrieval scope
+
+Automatic retrieval applies to INTERNAL and EXTERNAL sources on the same trigger. Do not retrieve only from the chat transcript or only from Interaction Learning.
+
+INTERNAL sources:
+- Interaction Learning rules and catalogs
+- Records
+- Sources
+- Issues
+- Architecture References
+- repository files and history
+
+EXTERNAL sources:
+- official documentation
+- linked pages already in the source set
+- other authoritative references implicated by the current structure
+
+Ordinary-language structural observations are valid triggers for this dual-source retrieval even when the user does not use technical vocabulary.
+
+## Context escape from conversational recursion
+
+Do not model the user only as a sequence of prompts. Treat their behavior as a structure-first retrieval strategy: they inspect structure, detect local inefficiency, and jump out of the current loop.
+
+Trigger a context escape when one or more of these are present:
+- the conversation is repeating the same structural question with only incremental wording changes
+- replies are mirroring the current thread instead of searching the relevant knowledge space
+- the user indicates that continuing in-loop is inefficient, incomplete, or the wrong layer
+- a needed answer lives in an internal catalog or an external official/linked source rather than in further chat continuation
+
+When context escape triggers:
+1. stop extending the current mirror loop
+2. retrieve INTERNAL and EXTERNAL sources together
+3. return one consolidated structural answer
+4. do not treat that retrieval as forecasting the user's next question
+
+Context escape is the primary mechanism for leaving conversational recursion. It is not a new Stage 0 outcome and does not persist a record by itself.
+
+## User-model boundary
+
+Proactive retrieval is lookup across the relevant knowledge space. It is not:
+- predicting the next prompt
+- continuing a serial Q&A chain one step ahead
+- a substitute for INT-0007's adjacent forward-scan when the cluster is still in-scope and efficient
+
+If forward-scan and context escape both appear applicable, prefer escape-and-retrieve over another in-loop adjacent guess.
 
 ## Similarity-first rule
 

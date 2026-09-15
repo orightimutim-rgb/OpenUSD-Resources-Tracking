@@ -134,6 +134,10 @@ Persistence rule:
 - Retrieval itself does not create a record.
 - When the user's structural judgment creates or changes a reusable rule, persist it additively/versioned so earlier rule states remain traceable.
 
+GitHub-side version note (2026-09-15, additive):
+- Ordinary-language structural observations remain valid triggers for dual-source retrieval and context escape (INT-0008).
+- This note does not replace the canonical INT-0006 rule text above.
+
 Status: ACTIVE_RULE
 
 ## INT-0007 — Proactive synthesis instead of toothpaste-style interaction
@@ -155,5 +159,54 @@ Reusable rule:
 Maintenance implication:
 - Because Interaction Learning is additive/versioned rather than overwrite-based, it requires periodic consolidation.
 - Consolidation should detect near-duplicates, superseded rules, conflict clusters, stale response strategies, and rules that can be merged into a higher-level abstraction while preserving provenance.
+
+GitHub-side version note (2026-09-15, additive):
+- Local forward-scan remains the adjacent-synthesis step inside a problem cluster.
+- It is not a model of the user as a sequence of upcoming prompts.
+- When the current conversational loop is locally repetitive or inefficient, context escape (INT-0008) takes priority over extending the mirror loop.
+- This note does not replace the canonical INT-0007 rule text above and does not merge INT-0007 into INT-0008.
+
+Status: ACTIVE_RULE
+
+## INT-0008 — Structure-first retrieval and context escape
+
+Problem detection logic:
+- The user clarified that they do not merely follow the conversation forward as a sequence of prompts.
+- They inspect structure, recognize when the current conversational loop is becoming inefficient, and deliberately jump OUT of that loop to retrieve information from both internal and external sources.
+
+User requirement:
+- Automatic retrieval must apply symmetrically to INTERNAL sources (Interaction Learning, Records, Sources, Issues, Architecture References, repository files/history) and EXTERNAL sources (official docs, linked pages, authoritative references).
+- When the current conversation becomes locally repetitive or inefficient, trigger a context escape: stop extending the mirror loop, search the relevant internal/external knowledge space, then return with a consolidated structural answer.
+- Retrieval is the primary escape mechanism from conversational recursion.
+- User natural-language structural observations remain valid triggers even without technical vocabulary.
+- Do not interpret proactive retrieval as merely forecasting the user's next question.
+
+Assistant judgment summary:
+- Modeling the user only as the next prompt in a serial chat underfits their actual strategy.
+- The user's behavior is a structure-first retrieval strategy: inspect the current structure, detect local inefficiency, then leave the loop to look up the relevant knowledge space.
+- INT-0006 covers interpreting ordinary-language structure. INT-0007 covers adjacent synthesis inside a cluster. INT-0008 covers jumping out of a recursive conversational/mirror loop via dual-source retrieval.
+
+Reusable rule:
+- Do not model the user only as a sequence of prompts.
+- Treat user behavior as a structure-first retrieval strategy.
+- Retrieve internally and externally on the same trigger, not as an afterthought reserved for “lookup” questions.
+- If the local conversation is repeating, circling, or only extending the current mirror, stop and retrieve instead of producing another in-loop reply.
+- Return a consolidated structural answer from the retrieved space. Do not treat that retrieval as guessing the next user question.
+- Retrieval still does not create an Interaction record. Persist only through the write gate, additively/versioned.
+
+Response strategy:
+- When inefficiency or structural observation is detected, run context escape before another serial clarification turn.
+- Search the internal catalog and repo knowledge layers together with official/linked/authoritative external sources that are already in the source set or clearly implicated.
+- Distinguish INT-0007 forward-scan (adjacent gaps still in-scope) from INT-0008 context escape (leave the loop).
+- If those two steps appear to collide, prefer escape-and-retrieve over extending the mirror loop.
+
+Related rules:
+- INT-0005: retrieval is not writing.
+- INT-0006: ordinary-language structure is a valid trigger.
+- INT-0007: adjacent synthesis is not the same as loop escape.
+
+Implementation reference:
+- See `knowledge/interaction-trigger-policy.md` (symmetric retrieval and context escape).
+- See `knowledge/interaction-optimization-policy.md` (retrieval is not next-question forecasting).
 
 Status: ACTIVE_RULE

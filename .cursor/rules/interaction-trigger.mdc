@@ -1,0 +1,77 @@
+---
+description: "Classify every meaningful maintenance event with the Interaction Trigger Policy. Retrieve INTERNAL and EXTERNAL sources symmetrically. If the local loop is inefficient, context-escape instead of extending the mirror. Retrieval never creates Interaction records."
+alwaysApply: true
+---
+
+# Interaction Learning retrieval trigger
+
+Canonical specs:
+- `knowledge/interaction-trigger-policy.md`
+- `knowledge/interaction-optimization-policy.md`
+
+Catalog: `knowledge/interaction-index.json`
+
+Rules: `knowledge/interaction-learning.md`
+
+Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
+
+## Retrieval is not writing
+
+Automatic retrieval MUST NOT create Interaction records. Retrieval and persistence are separate.
+
+- Retrieve whenever prior interaction logic or a structural observation could materially change the response.
+- Catalog lookup, `retrieve`, `classify`, `decide`, and `context-escape` are read-only.
+- A write happens only after the Interaction Write Gate is satisfied.
+- When writing is justified, append or version. Do not destructively overwrite prior rule states.
+
+## Structure-first user model (INT-0008)
+
+Do not model the user only as a sequence of prompts. Treat their behavior as a structure-first retrieval strategy: they inspect structure, detect local inefficiency, and jump OUT of the current loop.
+
+Ordinary-language structural observations are valid retrieval/escape triggers even without technical vocabulary.
+
+## Symmetric retrieval
+
+Retrieve INTERNAL and EXTERNAL sources on the same trigger:
+
+- INTERNAL: Interaction Learning, Records, Sources, Issues, Architecture References, repository files/history
+- EXTERNAL: official docs, linked pages, authoritative references
+
+Do not retrieve only from the current chat transcript.
+
+## Context escape
+
+When the current conversation or maintenance loop is locally repetitive, circling, or only extending the current mirror:
+
+1. stop extending the loop
+2. search the relevant internal and external knowledge space
+3. return one consolidated structural answer
+
+Retrieval is the primary escape from conversational recursion. It is not forecasting the user's next question.
+
+```text
+python3 scripts/interaction_trigger.py context-escape --event "<summary>"
+```
+
+## Required sequence
+
+1. Classify the event as one of:
+   - `NO_INTERACTION_ACTION`
+   - `RETRIEVE_ONLY`
+   - `UPDATE_EXISTING`
+   - `CREATE_NEW`
+   - `REVIEW_CONFLICT`
+2. If not `NO_INTERACTION_ACTION`, retrieve similar existing Interaction rules before deciding to write.
+3. If the local loop is inefficient or a structural observation needs knowledge outside the current thread, run context escape (internal + external) before another in-loop reply.
+4. Prefer retrieval-only or update/versioning. Create a new INT only for a genuinely new reusable decision pattern.
+5. If considering a write, run:
+
+```text
+python3 scripts/interaction_trigger.py decide --event "<summary>"
+```
+
+Use the result as routing evidence only. It does not persist a record.
+
+6. Conflicts, numbering collisions, verification-status changes, and high-impact heuristic changes need `APPROVAL REQUIRED` on GitHub Issue #1. Do not silently rewrite history.
+
+Do not create an Interaction entry for every conversation or repository event.

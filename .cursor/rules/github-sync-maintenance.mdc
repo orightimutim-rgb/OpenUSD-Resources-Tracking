@@ -8,7 +8,7 @@ alwaysApply: true
 Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
 Designated Cursor Agent URL: `https://cursor.com/agents/bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
 
-Before modifying repository knowledge, read `AGENTS.md`, `knowledge/sync-policy.md`, and `knowledge/interaction-trigger-policy.md`.
+Before modifying repository knowledge, read `AGENTS.md`, `knowledge/sync-policy.md`, `knowledge/interaction-trigger-policy.md`, and `knowledge/interaction-optimization-policy.md`.
 
 ## Mandatory pre-action trigger
 
@@ -21,7 +21,15 @@ Allowed outcomes:
 - `CREATE_NEW`
 - `REVIEW_CONFLICT`
 
-Do not create a new Interaction entry by default. Prefer retrieval-only when an existing rule already covers the case. Prefer update/versioning over creating near-duplicate Interaction entries.
+Do not create a new Interaction entry by default. Automatic retrieval MUST NOT create Interaction records. Prefer retrieval-only when an existing rule already covers the case. Prefer additive update/versioning over creating near-duplicate Interaction entries or overwriting prior rule states.
+
+Do not model the user only as a sequence of prompts. Treat their behavior as a structure-first retrieval strategy.
+
+Retrieve INTERNAL sources (Interaction Learning, Records, Sources, Issues, Architecture References, repository files/history) and EXTERNAL sources (official docs, linked pages, authoritative references) on the same trigger.
+
+When the current loop is locally repetitive or inefficient, trigger a context escape: stop extending the mirror loop, search the relevant internal/external knowledge space, then return a consolidated structural answer. Retrieval is the primary escape from conversational recursion. Do not interpret proactive retrieval as merely forecasting the next question.
+
+Interpret ordinary-language observations structurally even when the user does not use technical terminology.
 
 ## Responsibilities
 
@@ -37,6 +45,8 @@ Perform when relevant:
 - maintain unresolved issue indexes instead of silently resolving uncertain claims
 - generate concise changelog entries for meaningful maintenance
 - preserve public-safe, de-identified content only
+- dual-source retrieval after a structural issue (internal catalogs and external official/linked sources)
+- context escape when a maintenance or conversational loop is locally repetitive
 
 ## Decision rule
 
@@ -63,7 +73,7 @@ Create or update a GitHub issue instead of deciding silently when:
 
 ## Interaction learning
 
-Use `knowledge/interaction-learning.md` to avoid repeating known workflow mistakes. Retrieval comes before creation.
+Use `knowledge/interaction-learning.md` to avoid repeating known workflow mistakes. Retrieval comes before creation. If the local loop is inefficient, context-escape and dual-source retrieval come before another in-loop reply.
 
 When maintenance reveals a reusable pattern:
 1. search for a similar Interaction first
