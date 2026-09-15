@@ -8,7 +8,7 @@ alwaysApply: true
 Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
 Designated Cursor Agent URL: `https://cursor.com/agents/bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
 
-Before modifying repository knowledge, read `AGENTS.md`, `knowledge/sync-policy.md`, and `knowledge/interaction-trigger-policy.md`.
+Before modifying repository knowledge, read `AGENTS.md`, `knowledge/sync-policy.md`, `knowledge/interaction-trigger-policy.md`, and `knowledge/interaction-optimization-policy.md`.
 
 ## Mandatory pre-action trigger
 
@@ -21,7 +21,11 @@ Allowed outcomes:
 - `CREATE_NEW`
 - `REVIEW_CONFLICT`
 
-Do not create a new Interaction entry by default. Prefer retrieval-only when an existing rule already covers the case. Prefer update/versioning over creating near-duplicate Interaction entries.
+Do not create a new Interaction entry by default. Automatic retrieval MUST NOT create Interaction records. Prefer retrieval-only when an existing rule already covers the case. Prefer additive update/versioning over creating near-duplicate Interaction entries or overwriting prior rule states.
+
+Interpret ordinary-language observations structurally (missing parts, hierarchy, ordering, links, duplication, dependencies, handoffs, boundaries, synchronization) even when the user does not use technical terminology.
+
+When a structural issue is detected, perform a local forward-scan before acting: adjacent dependencies, likely downstream gaps, related Interaction rules, combined change, what should remain unchanged, and review candidates. Prefer one compact batch over serial micro-decisions when confidence is sufficient.
 
 ## Responsibilities
 
@@ -37,6 +41,8 @@ Perform when relevant:
 - maintain unresolved issue indexes instead of silently resolving uncertain claims
 - generate concise changelog entries for meaningful maintenance
 - preserve public-safe, de-identified content only
+- local forward-scan after a structural issue so adjacent maintenance is bundled
+- periodic Interaction consolidation reports (near-duplicates, superseded rules, conflict clusters, stale strategies, merge candidates) without rewriting historical rules
 
 ## Decision rule
 
@@ -63,14 +69,16 @@ Create or update a GitHub issue instead of deciding silently when:
 
 ## Interaction learning
 
-Use `knowledge/interaction-learning.md` to avoid repeating known workflow mistakes. Retrieval comes before creation.
+Use `knowledge/interaction-learning.md` to avoid repeating known workflow mistakes. Retrieval comes before creation. After retrieval, locally forward-scan adjacent structure before writing.
 
 When maintenance reveals a reusable pattern:
 1. search for a similar Interaction first
 2. if already covered, do not create a new entry
-3. if scope changes, update/version the existing rule
+3. if scope changes, update/version the existing rule additively
 4. if genuinely new, create a new concise Interaction summary
-5. if conflicting, open review instead of overwriting
+5. if conflicting or an uncertain consolidation merge, open review with `APPROVAL REQUIRED` instead of overwriting history
+
+Consolidation reports are review artifacts. They must not silently merge, delete, or rewrite historical Interaction rules.
 
 Record only concise decision summaries covering detection, decision basis, action, uncertainty, user/maintainer validation, and next-time handling.
 

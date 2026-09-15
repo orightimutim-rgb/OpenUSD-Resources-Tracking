@@ -109,6 +109,11 @@ Response strategy:
 Implementation reference:
 - See `knowledge/interaction-trigger-policy.md`.
 
+GitHub-side version note (2026-09-15, additive):
+- Automatic retrieval and Interaction persistence are separate operations.
+- Catalog lookup and helper commands `retrieve` / `classify` / `decide` / `write-gate` / `forward-scan` / `consolidate` never create or overwrite Interaction records.
+- A write occurs only after the Interaction Write Gate is satisfied, and then only as an additive/versioned update.
+
 Status: ACTIVE_RULE
 
 ## INT-0006 — Structure-first user reasoning signal
@@ -134,6 +139,10 @@ Persistence rule:
 - Retrieval itself does not create a record.
 - When the user's structural judgment creates or changes a reusable rule, persist it additively/versioned so earlier rule states remain traceable.
 
+GitHub-side version note (2026-09-15, additive):
+- The retrieval catalog indexes ordinary-language structural signals so agents do not wait for schema/code terminology.
+- Matching INT-0006 is a retrieval/review trigger, not an automatic persist.
+
 Status: ACTIVE_RULE
 
 ## INT-0007 — Proactive synthesis instead of toothpaste-style interaction
@@ -155,5 +164,14 @@ Reusable rule:
 Maintenance implication:
 - Because Interaction Learning is additive/versioned rather than overwrite-based, it requires periodic consolidation.
 - Consolidation should detect near-duplicates, superseded rules, conflict clusters, stale response strategies, and rules that can be merged into a higher-level abstraction while preserving provenance.
+
+Implementation reference:
+- See `knowledge/interaction-optimization-policy.md`.
+- GitHub-side helper: `scripts/interaction_trigger.py forward-scan` and `consolidate` (read-only; they do not rewrite historical rules).
+
+GitHub-side version note (2026-09-15, additive):
+- Local forward-scan and periodic consolidation are now GitHub-side maintenance steps.
+- Consolidation emits review candidates / `APPROVAL REQUIRED` items.
+- This note does not replace the canonical INT-0007 rule text above and does not create a new Interaction ID.
 
 Status: ACTIVE_RULE

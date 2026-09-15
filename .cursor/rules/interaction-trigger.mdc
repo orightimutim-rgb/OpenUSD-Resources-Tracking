@@ -1,0 +1,99 @@
+---
+description: "Classify every meaningful maintenance event with the Interaction Trigger Policy. Retrieve broadly; never let retrieval create Interaction records. After a structural issue, run a local forward scan. Write conservatively and additively. Consolidation reports must not rewrite historical rules."
+alwaysApply: true
+---
+
+# Interaction Learning retrieval trigger
+
+Canonical specs:
+- `knowledge/interaction-trigger-policy.md`
+- `knowledge/interaction-optimization-policy.md`
+
+Catalog: `knowledge/interaction-index.json`
+
+Rules: `knowledge/interaction-learning.md`
+
+Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
+
+## Retrieval is not writing
+
+Automatic retrieval MUST NOT create Interaction records. Retrieval and persistence are separate.
+
+- Retrieve whenever prior interaction logic or a structural observation could materially change the response.
+- Catalog lookup, `retrieve`, `classify`, `decide`, `forward-scan`, and `consolidate` are read-only.
+- A write happens only after the Interaction Write Gate is satisfied.
+- When writing is justified, append or version. Do not destructively overwrite prior rule states.
+
+## Structure-first signals
+
+Interpret the user's ordinary language structurally even when no database, schema, or programming terms are used.
+
+Treat as retrieval/review signals:
+- missing or extra parts
+- hierarchy / layers
+- ordering / sequence
+- links / correspondence / mismatch
+- duplication
+- dependencies
+- handoffs
+- boundaries
+- synchronization
+
+Do not ask the user to translate those observations into technical terminology before retrieving.
+
+## Local forward scan (INT-0007)
+
+Do not answer only the first detected structural symptom when adjacent consequences are reasonably inferable.
+
+When a structural issue is detected, before responding or writing:
+1. identify the current issue
+2. inspect adjacent dependencies and likely downstream gaps
+3. retrieve related Interaction rules
+4. return one compact combined recommendation
+5. separate confident actions from review candidates
+
+Prefer one batch over serial micro-decisions when confidence is sufficient. Uncertain items stay review candidates.
+
+```text
+python3 scripts/interaction_trigger.py forward-scan --event "<summary>"
+```
+
+## Periodic consolidation
+
+Because Interaction data is additive/versioned, run consolidation during maintenance batches in high-change periods and on the cadence in `knowledge/interaction-optimization-policy.md`.
+
+Consolidation detects:
+- near-duplicates
+- superseded rules
+- conflict clusters
+- stale response strategies
+- merge candidates into higher-level abstractions
+
+It must produce a review report. It must not silently rewrite, merge, or delete historical rules.
+
+```text
+python3 scripts/interaction_trigger.py consolidate
+```
+
+## Required sequence
+
+1. Classify the event as one of:
+   - `NO_INTERACTION_ACTION`
+   - `RETRIEVE_ONLY`
+   - `UPDATE_EXISTING`
+   - `CREATE_NEW`
+   - `REVIEW_CONFLICT`
+2. If not `NO_INTERACTION_ACTION`, retrieve similar existing Interaction rules before deciding to write.
+3. If a structural issue is present, run a local forward scan and bundle adjacent work.
+4. Prefer retrieval-only or update/versioning. Create a new INT only for a genuinely new reusable decision pattern.
+5. If considering a write, run:
+
+```text
+python3 scripts/interaction_trigger.py decide --event "<summary>"
+```
+
+Use the result as routing evidence only. It does not persist a record.
+
+6. Conflicts, numbering collisions, verification-status changes, uncertain consolidation merges, and high-impact heuristic changes need `APPROVAL REQUIRED` on GitHub Issue #1. Do not silently rewrite history.
+
+Do not create an Interaction entry for every conversation or repository event.
