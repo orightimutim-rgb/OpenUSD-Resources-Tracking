@@ -8,7 +8,20 @@ alwaysApply: true
 Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
 Designated Cursor Agent URL: `https://cursor.com/agents/bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
 
-Before modifying repository knowledge, read `AGENTS.md` and `knowledge/sync-policy.md`.
+Before modifying repository knowledge, read `AGENTS.md`, `knowledge/sync-policy.md`, and `knowledge/interaction-trigger-policy.md`.
+
+## Mandatory pre-action trigger
+
+Before any meaningful repository maintenance action, classify the task using the Interaction Trigger Policy.
+
+Allowed outcomes:
+- `NO_INTERACTION_ACTION`
+- `RETRIEVE_ONLY`
+- `UPDATE_EXISTING`
+- `CREATE_NEW`
+- `REVIEW_CONFLICT`
+
+Do not create a new Interaction entry by default. Prefer retrieval-only when an existing rule already covers the case. Prefer update/versioning over creating near-duplicate Interaction entries.
 
 ## Responsibilities
 
@@ -50,7 +63,16 @@ Create or update a GitHub issue instead of deciding silently when:
 
 ## Interaction learning
 
-Use `knowledge/interaction-learning.md` to avoid repeating known workflow mistakes. When maintenance reveals a new reusable pattern, add a concise rule summary covering detection, decision basis, action, uncertainty, and next-time handling.
+Use `knowledge/interaction-learning.md` to avoid repeating known workflow mistakes. Retrieval comes before creation.
+
+When maintenance reveals a reusable pattern:
+1. search for a similar Interaction first
+2. if already covered, do not create a new entry
+3. if scope changes, update/version the existing rule
+4. if genuinely new, create a new concise Interaction summary
+5. if conflicting, open review instead of overwriting
+
+Record only concise decision summaries covering detection, decision basis, action, uncertainty, user/maintainer validation, and next-time handling.
 
 ## Sync target discipline
 
