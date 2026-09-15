@@ -110,3 +110,28 @@ Implementation reference:
 - See `knowledge/interaction-trigger-policy.md`.
 
 Status: ACTIVE_RULE
+
+## INT-0006 — Structure-first user reasoning signal
+
+Problem detection logic:
+- The user clarified that their judgments come from seeing the structure of the situation, not from formal training in databases, programming, encoding, or data logic.
+- Their natural-language responses frequently identify hierarchy, missing parts, misalignment, ordering, duplication, dependency, or classification boundaries before technical labels are known.
+
+User requirement:
+- The system must understand and learn from structural observations expressed in ordinary language.
+- The user should not need to know or supply technical terminology for a structural signal to trigger retrieval or review.
+
+Assistant judgment summary:
+- The user's wording is best treated as a structure-first signal source rather than as a technical-specification interface.
+- The assistant/database layer should translate natural-language structural observations into technical retrieval categories internally.
+
+Reusable rule:
+- Detect structural meaning before looking for technical vocabulary.
+- Treat statements about missing pieces, layers, ordering, links, duplication, handoffs, boundaries, dependencies, or synchronization as strong interaction-retrieval signals.
+- Do not ask the user to convert such observations into code, schema, database, or data-model terminology unless implementation details are genuinely needed.
+
+Persistence rule:
+- Retrieval itself does not create a record.
+- When the user's structural judgment creates or changes a reusable rule, persist it additively/versioned so earlier rule states remain traceable.
+
+Status: ACTIVE_RULE
