@@ -109,6 +109,12 @@ Response strategy:
 Implementation reference:
 - See `knowledge/interaction-trigger-policy.md`.
 
+GitHub-side version note (2026-09-15, additive):
+- Automatic retrieval and Interaction persistence are separate operations.
+- Catalog lookup and helper commands `retrieve` / `classify` / `decide` / `write-gate` never create or overwrite Interaction records.
+- A write occurs only after the Interaction Write Gate is satisfied, and then only as an additive/versioned update.
+- Catalog: `knowledge/interaction-index.json`. Helper: `scripts/interaction_trigger.py`.
+
 Status: ACTIVE_RULE
 
 ## INT-0006 — Structure-first user reasoning signal
@@ -133,5 +139,9 @@ Reusable rule:
 Persistence rule:
 - Retrieval itself does not create a record.
 - When the user's structural judgment creates or changes a reusable rule, persist it additively/versioned so earlier rule states remain traceable.
+
+GitHub-side version note (2026-09-15, additive):
+- The retrieval catalog indexes ordinary-language structural signals so agents do not wait for schema/code terminology.
+- Matching INT-0006 is a retrieval/review trigger, not an automatic persist.
 
 Status: ACTIVE_RULE

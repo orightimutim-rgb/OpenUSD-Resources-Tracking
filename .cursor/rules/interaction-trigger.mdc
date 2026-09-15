@@ -1,0 +1,62 @@
+---
+description: "Classify every meaningful maintenance event with the Interaction Trigger Policy. Retrieve broadly; never let retrieval create Interaction records. Write conservatively and additively."
+alwaysApply: true
+---
+
+# Interaction Learning retrieval trigger
+
+Canonical spec: `knowledge/interaction-trigger-policy.md`
+
+Catalog: `knowledge/interaction-index.json`
+
+Rules: `knowledge/interaction-learning.md`
+
+Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
+
+## Retrieval is not writing
+
+Automatic retrieval MUST NOT create Interaction records. Retrieval and persistence are separate.
+
+- Retrieve whenever prior interaction logic or a structural observation could materially change the response.
+- Catalog lookup, `retrieve`, `classify`, and `decide` are read-only.
+- A write happens only after the Interaction Write Gate is satisfied.
+- When writing is justified, append or version. Do not destructively overwrite prior rule states.
+
+## Structure-first signals
+
+Interpret the user's ordinary language structurally even when no database, schema, or programming terms are used.
+
+Treat as retrieval/review signals:
+- missing or extra parts
+- hierarchy / layers
+- ordering / sequence
+- links / correspondence / mismatch
+- duplication
+- dependencies
+- handoffs
+- boundaries
+- synchronization
+
+Do not ask the user to translate those observations into technical terminology before retrieving.
+
+## Required sequence
+
+1. Classify the event as one of:
+   - `NO_INTERACTION_ACTION`
+   - `RETRIEVE_ONLY`
+   - `UPDATE_EXISTING`
+   - `CREATE_NEW`
+   - `REVIEW_CONFLICT`
+2. If not `NO_INTERACTION_ACTION`, retrieve similar existing Interaction rules before deciding to write.
+3. Prefer retrieval-only or update/versioning. Create a new INT only for a genuinely new reusable decision pattern.
+4. If considering a write, run:
+
+```text
+python3 scripts/interaction_trigger.py decide --event "<summary>"
+```
+
+Use the result as routing evidence only. It does not persist a record.
+
+5. Conflicts, numbering collisions, verification-status changes, and high-impact heuristic changes need `APPROVAL REQUIRED` on GitHub Issue #1. Do not silently rewrite history.
+
+Do not create an Interaction entry for every conversation or repository event.
