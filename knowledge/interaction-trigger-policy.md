@@ -99,6 +99,34 @@ Every external mutation must still distinguish:
 - waiting for authorization
 - waiting for verification
 
+## GitHub-side / Cursor maintenance events
+
+The same Trigger Router applies to meaningful GitHub-side maintenance batches, not only chat turns.
+
+A repository event, CI run, status comment, formatting-only change, or changelog-only note is not by itself an Interaction write. Classify the batch first. Retrieve similar existing rules before any Interaction write. Prefer `UPDATE_EXISTING` over `CREATE_NEW`.
+
+High-impact changes to these trigger heuristics require an `APPROVAL REQUIRED` comment on GitHub Issue #1 before this policy is rewritten.
+
+## Retrieval catalog
+
+Human-readable rules live in `knowledge/interaction-learning.md`.
+
+The machine-readable retrieval catalog is `knowledge/interaction-index.json`. Before an Interaction write, search that catalog (or an equivalent similarity search over the markdown rules) by:
+
+1. problem-detection pattern
+2. user prompt pattern
+3. reusable rule
+4. response strategy
+5. decision basis and outcome
+
+GitHub-side helper:
+
+```text
+python3 scripts/interaction_trigger.py decide --event "<maintenance-event-summary>"
+```
+
+The helper suggests a routing outcome. It does not write Interaction records.
+
 ## Scope boundary
 
 This policy stores concise, reviewable decision summaries and criteria. It does not store hidden chain-of-thought and does not claim to modify model weights.

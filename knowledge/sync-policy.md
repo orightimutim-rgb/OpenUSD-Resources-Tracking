@@ -37,25 +37,31 @@ These may be represented only as de-identified abstract layers when relevant to 
 ## Active update workflow
 
 1. ingest new conversation material
-2. retrieve similar Interaction Learning records first when relevant
-3. de-duplicate against Records / Sources / Architecture References
-4. extract technical claims and sources
-5. classify FACT / USER_REACTION / AI_RESPONSE_SCRIPT / ISSUE where applicable
-6. record assistant structure notes, judgment summary, uncertainty/risk, response strategy, and sync checkpoints for important interactions
-7. verify where possible
-8. update Airtable structured database
-9. write the de-identified GitHub snapshot or patch in the same conversation workflow
-10. preserve unresolved issues for later review
-11. never silently convert a working claim into a verified fact
-12. explicitly state what was actually synchronized and what was not
+2. classify the event with `knowledge/interaction-trigger-policy.md` (`NO_INTERACTION_ACTION` / `RETRIEVE_ONLY` / `UPDATE_EXISTING` / `CREATE_NEW` / `REVIEW_CONFLICT`)
+3. retrieve similar Interaction Learning records before any Interaction write
+4. de-duplicate against Records / Sources / Architecture References
+5. extract technical claims and sources
+6. classify FACT / USER_REACTION / AI_RESPONSE_SCRIPT / ISSUE where applicable
+7. record assistant structure notes, judgment summary, uncertainty/risk, response strategy, and sync checkpoints for important interactions
+8. verify where possible
+9. update Airtable structured database
+10. write the de-identified GitHub snapshot or patch in the same conversation workflow
+11. preserve unresolved issues for later review
+12. never silently convert a working claim into a verified fact
+13. explicitly state what was actually synchronized and what was not
 
 ## Interaction-learning rule
 
+Canonical routing spec: `knowledge/interaction-trigger-policy.md`.
+
 For recurring problem types such as missing sources, architecture gaps, duplicate records, synchronization ambiguity, vendor mapping, and issue handling:
+- classify the event before writing Interaction Learning
 - search the interaction-learning layer first
 - reuse prior decision rules when still applicable
+- prefer update/versioning over creating a near-duplicate
 - create a new version when the new case conflicts with an older rule
 - retain the user's validation/correction as part of the rule history
+- do not create an Interaction entry for every conversation or repository event
 
 ## Conflict handling
 

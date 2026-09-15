@@ -18,6 +18,10 @@ Assistant judgment summary:
 User validation:
 - The user emphasized that the reasoning process used to detect and correct the omission must itself become reusable data.
 
+Retrieval tags: missing, architecture-node, source, relationship, physx, smallest-edit, duplicate-avoidance
+
+Default trigger action: RETRIEVE_ONLY
+
 Status: ACTIVE_RULE
 
 ## INT-0002 — Synchronization transparency
@@ -35,6 +39,10 @@ Reusable rule:
 Assistant judgment summary:
 - This is an execution-transparency problem, not merely a wording problem.
 
+Retrieval tags: synchronization, transparency, persistence-language, authorization, completed-claim
+
+Default trigger action: RETRIEVE_ONLY
+
 Status: ACTIVE_RULE
 
 ## INT-0003 — Duplicate detection when record number is forgotten
@@ -45,6 +53,10 @@ Problem detection logic:
 Reusable rule:
 - Compare core propositions, examples, and knowledge nodes before creating a new record.
 - If highly overlapping, preserve the canonical record and create a duplicate relationship instead of incrementing a new REC number.
+
+Retrieval tags: duplicate, forgotten-id, semantic-overlap, record-number
+
+Default trigger action: RETRIEVE_ONLY
 
 Status: ACTIVE_RULE
 
@@ -77,6 +89,12 @@ Sync checkpoint:
 - GitHub is the public versioned mirror.
 - In-conversation synchronization is active; unattended background monitoring is not.
 
+Retrieval tags: judgment-summary, retrieval, versioning, response-strategy, sync-checkpoint
+
+Default trigger action: RETRIEVE_ONLY
+
+Related operational rule: INT-0005 / `knowledge/interaction-trigger-policy.md`
+
 Status: ACTIVE_RULE
 
 ## INT-0005 — Automatic interaction retrieval and write gating
@@ -107,6 +125,22 @@ Response strategy:
 - After the action and user feedback, decide whether the interaction database should remain unchanged, update an existing rule, create a new rule, or open a conflict review.
 
 Implementation reference:
-- See `knowledge/interaction-trigger-policy.md`.
+- Canonical routing spec: `knowledge/interaction-trigger-policy.md`
+- Retrieval catalog: `knowledge/interaction-index.json`
+- GitHub-side helper: `scripts/interaction_trigger.py`
+
+Version note (2026-09-15 GitHub operationalization):
+- Cursor GitHub-side maintenance uses the same Trigger Router as conversation turns.
+- Retrieve similar existing rules before deciding to write.
+- High-impact changes to trigger heuristics require `APPROVAL REQUIRED` on GitHub Issue #1.
+- This batch does not create a new Interaction ID; INT-0005 already covers the routing layer.
+
+Uncertainty / risk:
+- Open pull request #2 drafts a different rule also numbered INT-0005 (owner approval/notification protocol). That is a numbering collision, not a merge of the two rules. INT-0005 on `main` remains the retrieval-trigger rule. PR #2 should rebase and assign a new ID to the approval-protocol rule.
+- Token-overlap retrieval in `scripts/interaction_trigger.py` is an implementation aid, not a replacement for the canonical policy. A different similarity heuristic would be a high-impact policy change and needs owner approval.
+
+Retrieval tags: trigger-router, retrieve-before-write, write-gate, no-log-every-event, classification
+
+Default trigger action: RETRIEVE_ONLY
 
 Status: ACTIVE_RULE

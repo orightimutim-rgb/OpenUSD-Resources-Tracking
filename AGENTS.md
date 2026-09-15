@@ -41,9 +41,10 @@ Escalate these as a review item instead of silently deciding.
 
 Read these first when relevant:
 1. `knowledge/sync-policy.md`
-2. `knowledge/interaction-learning.md`
-3. `knowledge/chat-sync-2026-09-15.md`
-4. architecture-reference files or source indexes present in the repository
+2. `knowledge/interaction-trigger-policy.md`
+3. `knowledge/interaction-learning.md`
+4. `knowledge/chat-sync-2026-09-15.md`
+5. architecture-reference files or source indexes present in the repository
 
 ## Synchronization principles
 
@@ -58,7 +59,18 @@ Read these first when relevant:
 
 ## Interaction-learning rule
 
-When a recurring repository problem appears, record the reusable maintenance rule, not only the fix. Track:
+Canonical routing spec: `knowledge/interaction-trigger-policy.md`.
+
+For each meaningful maintenance event, classify first:
+- `NO_INTERACTION_ACTION`
+- `RETRIEVE_ONLY`
+- `UPDATE_EXISTING`
+- `CREATE_NEW`
+- `REVIEW_CONFLICT`
+
+Retrieve similar Interaction rules before deciding to write. Do not create an Interaction entry for every conversation or repository event. Prefer update/versioning over near-duplicates.
+
+When a recurring repository problem appears and the write gate is satisfied, record the reusable maintenance rule, not only the fix. Track:
 - detected pattern
 - evidence
 - action

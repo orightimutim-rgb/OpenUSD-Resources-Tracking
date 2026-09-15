@@ -13,6 +13,7 @@ All routine GitHub maintenance handoffs should reference this Agent ID and URL, 
 - source/index cleanup
 - architecture-reference maintenance
 - Interaction Learning consistency checks
+- Interaction Trigger classification and retrieval
 - duplicate detection
 - stale-link checks
 - terminology consistency
@@ -29,5 +30,6 @@ The repository can store and propagate the Cursor Agent target, but GitHub alone
 - `AGENTS.md`
 - `.cursor/rules/github-sync-maintenance.mdc`
 - `knowledge/sync-policy.md`
+- `knowledge/interaction-trigger-policy.md`
 - `knowledge/interaction-learning.md`
 - GitHub Issue #1
