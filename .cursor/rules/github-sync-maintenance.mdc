@@ -5,6 +5,9 @@ alwaysApply: true
 
 # GitHub Mirror Maintenance
 
+Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
+Designated Cursor Agent URL: `https://cursor.com/agents/bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
+
 Before modifying repository knowledge, read `AGENTS.md` and `knowledge/sync-policy.md`.
 
 ## Responsibilities
@@ -48,6 +51,10 @@ Create or update a GitHub issue instead of deciding silently when:
 ## Interaction learning
 
 Use `knowledge/interaction-learning.md` to avoid repeating known workflow mistakes. When maintenance reveals a new reusable pattern, add a concise rule summary covering detection, decision basis, action, uncertainty, and next-time handling.
+
+## Sync target discipline
+
+When creating handoff tasks, issues, or metadata for Cursor, include the designated Agent ID and URL above so work consistently points to the same Cursor Agent. Do not invent agent state or claim the Cursor Agent accepted or executed a task unless there is explicit evidence in GitHub or Cursor output.
 
 ## Output discipline
 
