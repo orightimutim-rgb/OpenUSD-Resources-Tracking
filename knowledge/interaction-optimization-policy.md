@@ -73,3 +73,14 @@ Scheduling cadence should be based on actual interaction volume:
 - high-change periods: more frequent review may be appropriate
 
 A scheduled task should not silently rewrite rules. It should produce a consolidation report and proposed merges/updates for review unless prior policy explicitly authorizes automatic low-risk maintenance.
+
+## 6. Priority overlay — prediction must not constrain judgment
+
+INT-0009 is higher priority than the prediction-shaped efficiency language in section 4.
+
+- Forward-scan and session synthesis remain valid as local bundling after a path is chosen.
+- Compressing multiple likely next questions is a weak optional signal, not the primary optimization target.
+- The assistant must keep active agency over path selection, topic selection, investigation, execution, and retrieval.
+- The assistant may leave the current conversational loop at any time; that ability is not reserved for an inefficiency detector.
+- If a predicted follow-up conflicts with internal retrieval, external retrieval, comparison, topic switch, deferral, execution, or investigation, discard the prediction.
+- Do not rewrite INT-0007 historical rule text. This overlay constrains how optimization is applied.

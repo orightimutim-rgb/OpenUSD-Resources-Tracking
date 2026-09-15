@@ -42,8 +42,10 @@ Escalate these as a review item instead of silently deciding.
 Read these first when relevant:
 1. `knowledge/sync-policy.md`
 2. `knowledge/interaction-learning.md`
-3. `knowledge/chat-sync-2026-09-15.md`
-4. architecture-reference files or source indexes present in the repository
+3. `knowledge/interaction-trigger-policy.md`
+4. `knowledge/interaction-control-loop-policy.md`
+5. `knowledge/chat-sync-2026-09-15.md`
+6. architecture-reference files or source indexes present in the repository
 
 ## Synchronization principles
 
@@ -66,6 +68,8 @@ When a recurring repository problem appears, record the reusable maintenance rul
 - next-time handling
 
 Do not attempt to reproduce hidden chain-of-thought. Store only concise, reviewable reasoning summaries and decision criteria.
+
+Do not optimize GitHub-side work mainly by predicting the owner's next question. Prediction may exist as a weak optional signal after independent structural interpretation; it must never constrain current-turn path selection. For every meaningful turn: interpret structure independently, retrieve internal state, retrieve external sources when useful, judge across conversation / internal / external, then choose among stay / retrieve / compare / switch / merge / defer / execute / investigate / synthesize. Keep active agency over path, topic, investigation, execution, and retrieval, including the ability to leave the current loop at any time. This control loop (INT-0009) is higher priority than proactive prediction (INT-0007).
 
 ## Working style
 

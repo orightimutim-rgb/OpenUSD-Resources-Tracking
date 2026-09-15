@@ -109,6 +109,10 @@ Response strategy:
 Implementation reference:
 - See `knowledge/interaction-trigger-policy.md`.
 
+GitHub-side version note (2026-09-15):
+- Related later layer: INT-0009 (active agency / control loop). INT-0005 remains the routing / write-gate rule and is not replaced.
+- Stage 0 still gates writes. Path selection happens in the INT-0009 control loop and must not be reduced to next-question prediction.
+
 Status: ACTIVE_RULE
 
 ## INT-0006 — Structure-first user reasoning signal
@@ -134,6 +138,10 @@ Persistence rule:
 - Retrieval itself does not create a record.
 - When the user's structural judgment creates or changes a reusable rule, persist it additively/versioned so earlier rule states remain traceable.
 
+GitHub-side version note (2026-09-15):
+- Related later layer: INT-0009 (active agency / control loop). INT-0006 remains the ordinary-language structural-signal rule and is not replaced.
+- Independent structural interpretation in the control loop still treats natural-language structural observations as valid triggers.
+
 Status: ACTIVE_RULE
 
 ## INT-0007 — Proactive synthesis instead of toothpaste-style interaction
@@ -155,5 +163,49 @@ Reusable rule:
 Maintenance implication:
 - Because Interaction Learning is additive/versioned rather than overwrite-based, it requires periodic consolidation.
 - Consolidation should detect near-duplicates, superseded rules, conflict clusters, stale response strategies, and rules that can be merged into a higher-level abstraction while preserving provenance.
+
+GitHub-side version note (2026-09-15):
+- Related later layer: INT-0009 (active agency / control loop). INT-0007 remains the local forward-scan / consolidation rule.
+- Compressing likely next questions is a weak optional efficiency signal. It must not constrain current-turn path selection. INT-0009 is higher priority than proactive prediction.
+
+Status: ACTIVE_RULE
+
+## INT-0009 — Active agency / control loop, not next-question prediction
+
+Problem detection logic:
+- The user corrected the interaction-learning architecture: the system must not optimize mainly by predicting the user's next question.
+- Prediction may exist as a weak optional signal, but it must never constrain current-turn judgment.
+- The core requirement is to preserve the ability to step outside the current conversational loop at any time.
+
+User requirement:
+- For every meaningful turn, the decision layer must be able to choose among: stay in topic, retrieve internal knowledge, retrieve external sources, compare conversation vs internal vs external, switch topic when structurally justified, merge tasks, defer a local subproblem, execute an external action, investigate a newly detected structural gap, or return with a synthesized answer.
+- Target control loop: current message → independent structural interpretation → internal retrieval → external retrieval when useful → assistant self-judgment across three inputs (conversation / internal / external) → choose best action path → respond or execute → update structure only if warranted.
+- The assistant must keep active agency over path selection, topic selection, investigation, execution, and retrieval.
+- This rule is higher priority than proactive prediction.
+
+Assistant judgment summary:
+- INT-0007 covers local forward-scan after a structural issue is found; that is bundling, not the whole decision architecture.
+- Unmerged INT-0008 (PRs #6/#7) covers leaving an inefficient loop via retrieval. That is one available path, not the always-on control loop.
+- This rule is a different layer: current-turn path selection must remain an active choice across three inputs. Next-question prediction must not constrain that choice.
+
+Reusable rule:
+- Interpret the current message structurally before any prediction step.
+- Retrieve internal state; retrieve external sources when useful.
+- Judge across conversation / internal / external, then choose the best action path from the catalog.
+- Do not stay in a recursive loop merely because a follow-up question is predicted.
+- Retrieval and execution still do not create Interaction records. Persistence remains gated by INT-0005.
+
+Persistence rule:
+- Preserve INT-0005 / INT-0006 / INT-0007 as historical and still-active related layers.
+- Do not destructively overwrite those rules with this correction.
+- INT-0008 numbering on unmerged PRs #6/#7 is `APPROVAL REQUIRED` for rebase, not silently reassigned.
+
+Implementation reference:
+- See `knowledge/interaction-control-loop-policy.md`.
+
+Uncertainty / risk:
+- Treating every turn as a topic switch can fragment work that should stay bundled (INT-0007).
+- Skipping user clarification when only the user can supply a missing fact.
+- Next-time handling: keep prediction as an optional hint; if it conflicts with retrieval, investigation, execution, or leaving the loop, discard the prediction.
 
 Status: ACTIVE_RULE

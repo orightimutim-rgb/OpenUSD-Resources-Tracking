@@ -57,6 +57,8 @@ For recurring problem types such as missing sources, architecture gaps, duplicat
 - create a new version when the new case conflicts with an older rule
 - retain the user's validation/correction as part of the rule history
 
+Current-turn path selection is not next-question prediction. Independent structural interpretation, internal retrieval, and external retrieval when useful come before choosing an action path. Prediction is a weak optional signal and must never constrain judgment. The assistant may leave the current conversational loop at any time. Retrieval still does not create an Interaction record. See INT-0009 / `knowledge/interaction-control-loop-policy.md`.
+
 ## Conflict handling
 
 When two records disagree:

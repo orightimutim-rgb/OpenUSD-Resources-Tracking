@@ -4,6 +4,12 @@ Purpose: decide automatically, for each meaningful conversation turn, whether th
 
 This policy is a routing layer. It does **not** create a new Interaction record for every message.
 
+## Control loop — higher priority than prediction
+
+Path selection is specified by INT-0009 / `knowledge/interaction-control-loop-policy.md`. Stage 0 below gates Interaction writes. It does not replace the control loop and must not be reduced to next-question prediction.
+
+For every meaningful turn, interpret the current message structurally, retrieve internal state, retrieve external sources when useful, then judge across conversation / internal / external before choosing an action path. Prediction of the next user question is a weak optional signal and must never constrain that choice. The assistant may leave the current loop at any time.
+
 ## Core distinction — retrieval is not writing
 
 Automatic retrieval and Interaction persistence are separate operations.
@@ -112,7 +118,12 @@ This is intended to produce layered learning history, not a flat chat log and no
 ## Required decision sequence
 
 `incoming user message`
-→ `trigger classification`
+→ `independent structural interpretation` (INT-0009; not next-question prediction)
+→ `internal retrieval`
+→ `external retrieval when useful`
+→ `self-judgment across conversation / internal / external`
+→ `choose action path` (stay / retrieve / compare / switch / merge / defer / execute / investigate / synthesize)
+→ `trigger classification` (INT-0005 write routing)
 → if triggered: `retrieve similar interaction rules`
 → inspect relevant knowledge layers
 → form current judgment
@@ -120,6 +131,8 @@ This is intended to produce layered learning history, not a flat chat log and no
 → inspect user feedback
 → decide `NO WRITE / UPDATE-VERSION / CREATE / REVIEW`
 → synchronize external stores when applicable
+
+A predicted next prompt must not skip, reorder, or veto the interpretation, retrieval, or path-choice steps.
 
 ## Similarity-first rule
 
