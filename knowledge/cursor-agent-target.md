@@ -28,6 +28,9 @@ The repository can store and propagate the Cursor Agent target, but GitHub alone
 
 - `AGENTS.md`
 - `.cursor/rules/github-sync-maintenance.mdc`
+- `.cursor/rules/interaction-trigger.mdc`
 - `knowledge/sync-policy.md`
+- `knowledge/interaction-trigger-policy.md`
+- `knowledge/interaction-optimization-policy.md`
 - `knowledge/interaction-learning.md`
 - GitHub Issue #1

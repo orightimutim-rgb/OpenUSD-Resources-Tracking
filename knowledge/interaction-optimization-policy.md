@@ -63,7 +63,20 @@ The optimization target is fewer serial turns, not fewer thoughts.
 
 A useful response should compress multiple likely next questions into one coherent structural answer without overwhelming the user or pretending certainty where it does not exist.
 
-## 5. Scheduled maintenance principle
+## 5. Context escape — retrieval is not next-question forecasting
+
+INT-0007's forward-scan remains valid for adjacent workflow gaps inside a cluster. It does not mean the user is a sequence of upcoming prompts.
+
+When the current conversation becomes locally repetitive or inefficient:
+- stop extending the mirror loop
+- retrieve symmetrically from INTERNAL sources (Interaction Learning, Records, Sources, Issues, Architecture References, repository files/history) and EXTERNAL sources (official docs, linked pages, authoritative references)
+- return with a consolidated structural answer
+
+Retrieval is the primary escape from conversational recursion. Proactive retrieval is not equivalent to guessing the user's next question. Ordinary-language structural observations remain valid escape triggers.
+
+This section implements INT-0008. It does not replace sections 1–4 and does not rewrite INT-0007.
+
+## 6. Scheduled maintenance principle
 
 Periodic consolidation is needed because additive/versioned storage accumulates history.
 

@@ -57,6 +57,10 @@ For recurring problem types such as missing sources, architecture gaps, duplicat
 - create a new version when the new case conflicts with an older rule
 - retain the user's validation/correction as part of the rule history
 
+Automatic retrieval applies symmetrically to INTERNAL knowledge (Interaction Learning, Records, Sources, Issues, Architecture References, repository files/history) and EXTERNAL official/linked/authoritative sources. Retrieval does not persist a record.
+
+Do not model collaborators only as a sequence of prompts. If the current conversation is locally repetitive or inefficient, stop extending the mirror loop, retrieve the relevant internal/external space, and return a consolidated structural answer. That retrieval is not next-question forecasting.
+
 ## Conflict handling
 
 When two records disagree:

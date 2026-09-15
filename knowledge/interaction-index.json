@@ -1,0 +1,162 @@
+{
+  "sync_version": 4,
+  "canonical_policy": "knowledge/interaction-trigger-policy.md",
+  "optimization_policy": "knowledge/interaction-optimization-policy.md",
+  "human_readable_rules": "knowledge/interaction-learning.md",
+  "note": "Retrieval catalog for the Interaction Trigger Policy. Looking up a rule or running context-escape must not create or rewrite Interaction records. Retrieval applies symmetrically to internal and external sources.",
+  "retrieval_does_not_persist": true,
+  "context_escape_does_not_persist": true,
+  "write_policy": "retrieve broadly, write conservatively, additive versioned history",
+  "history_policy": "When a write is justified, append or version; do not destructively overwrite prior rule states.",
+  "retrieval_scope": {
+    "internal": [
+      "Interaction Learning",
+      "Records",
+      "Sources",
+      "Issues",
+      "Architecture References",
+      "repository files/history"
+    ],
+    "external": [
+      "official documentation",
+      "linked pages",
+      "authoritative references"
+    ]
+  },
+  "rules": [
+    {
+      "id": "INT-0001",
+      "title": "Detecting a missing architecture node",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0003", "INT-0006", "INT-0008"],
+      "problem_types": ["missing architecture node", "missing source", "missing relationship", "already-existing content"],
+      "prompt_patterns": ["is something missing", "should this have its own node", "official page links to a component"],
+      "structural_signals": ["missing parts", "hierarchy", "links"],
+      "tags": ["missing", "architecture-node", "source", "relationship", "smallest-edit"],
+      "reusable_rule": "Distinguish missing source vs missing relationship vs missing architecture node vs already-existing content, then apply the smallest necessary update.",
+      "response_strategy": "Search Records, Sources, Architecture References, and implicated official pages before creating anything new."
+    },
+    {
+      "id": "INT-0002",
+      "title": "Synchronization transparency",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0004", "INT-0005"],
+      "problem_types": ["implied persistence", "execution transparency", "authorization boundary"],
+      "prompt_patterns": ["was this saved", "did you update Airtable", "completed the sync"],
+      "structural_signals": ["synchronization", "handoffs", "boundaries"],
+      "tags": ["synchronization", "transparency", "persistence-language", "authorization"],
+      "reusable_rule": "Distinguish actually executed externally, planned only, not yet written, and waiting for authorization.",
+      "response_strategy": "Do not imply external persistence without actual tool execution."
+    },
+    {
+      "id": "INT-0003",
+      "title": "Duplicate detection when record number is forgotten",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0001", "INT-0005"],
+      "problem_types": ["semantic duplicate", "forgotten record number", "near-duplicate interaction"],
+      "prompt_patterns": ["I posted this before", "not sure of the record number", "is this a duplicate"],
+      "structural_signals": ["duplication"],
+      "tags": ["duplicate", "forgotten-id", "semantic-overlap", "near-duplicate"],
+      "reusable_rule": "Compare core propositions before creating a new record. If highly overlapping, preserve the canonical record.",
+      "response_strategy": "Create a duplicate relationship instead of incrementing a new ID."
+    },
+    {
+      "id": "INT-0004",
+      "title": "Assistant judgment as retrievable interaction data",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0005", "INT-0008"],
+      "problem_types": ["missing judgment layer", "event log without decision basis", "rule versioning"],
+      "prompt_patterns": ["preserve the reasoning", "make this reusable", "what was the decision basis"],
+      "structural_signals": ["hierarchy", "ordering", "handoffs"],
+      "tags": ["judgment-summary", "retrieval", "versioning", "response-strategy", "additive-history"],
+      "reusable_rule": "Store shareable judgment summaries and retrieve similar interaction rules before deciding. Version on conflict instead of overwriting.",
+      "response_strategy": "Retrieve similar rules first; keep public de-identified summaries only."
+    },
+    {
+      "id": "INT-0005",
+      "title": "Automatic interaction retrieval and write gating",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0004", "INT-0006", "INT-0008"],
+      "problem_types": ["interaction treated as a passive log", "write-every-event inflation", "automatic retrieval creating records", "trigger routing"],
+      "prompt_patterns": ["automatic retrieval trigger", "do not create an interaction for every event", "retrieval must not automatically create", "retrieve broadly write conservatively"],
+      "structural_signals": ["synchronization", "boundaries", "handoffs"],
+      "tags": ["trigger-router", "retrieve-before-write", "write-gate", "retrieval-not-persist"],
+      "reusable_rule": "Run the Trigger Router first. Retrieve similar rules before writing. Retrieval never creates a record. Prefer update/versioning over CREATE_NEW.",
+      "response_strategy": "Classify each meaningful event; leave Interaction Learning unchanged unless a reusable rule must be created, versioned, or reviewed."
+    },
+    {
+      "id": "INT-0006",
+      "title": "Structure-first user reasoning signal",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0001", "INT-0005", "INT-0008"],
+      "problem_types": ["structural observation in ordinary language", "missing technical vocabulary", "untranslated user structure signal"],
+      "prompt_patterns": ["a piece seems missing", "the order feels wrong", "these two things should stay separate", "this belongs under that", "I don't know the database terms"],
+      "structural_signals": ["missing parts", "hierarchy", "ordering", "links", "duplication", "dependencies", "handoffs", "boundaries", "synchronization"],
+      "tags": ["structure-first", "natural-language", "no-forced-technical-translation"],
+      "reusable_rule": "Detect structural meaning before looking for technical vocabulary. Ordinary-language structure signals are retrieval triggers.",
+      "response_strategy": "Retrieve first from structural meaning. Retrieval does not persist. If a reusable rule changes, version additively."
+    },
+    {
+      "id": "INT-0007",
+      "title": "Proactive synthesis instead of toothpaste-style interaction",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0003", "INT-0005", "INT-0006", "INT-0008"],
+      "problem_types": ["serial micro-decisions", "toothpaste-style back-and-forth", "isolated symptom fix", "unscanned adjacent dependencies"],
+      "prompt_patterns": ["stop toothpaste-style serial micro-decisions", "perform a local forward scan", "prefer one compact batch recommendation", "periodic consolidation"],
+      "structural_signals": ["ordering", "dependencies", "missing parts", "handoffs"],
+      "tags": ["forward-scan", "proactive-synthesis", "compact-batch", "toothpaste", "serial-micro-decisions", "consolidation"],
+      "reusable_rule": "When a structural correction is detected, perform a local forward-scan before responding. Prefer one compact batch when confidence is sufficient. Bundle uncertain items as review candidates.",
+      "response_strategy": "Scan adjacent dependencies inside the current cluster. This is not next-question forecasting and is not a substitute for INT-0008 context escape."
+    },
+    {
+      "id": "INT-0008",
+      "title": "Structure-first retrieval and context escape",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0005", "INT-0006", "INT-0007"],
+      "problem_types": [
+        "user modeled only as a prompt sequence",
+        "conversational recursion",
+        "mirror-loop continuation",
+        "internal-only or external-only retrieval",
+        "proactive retrieval treated as next-question forecasting"
+      ],
+      "prompt_patterns": [
+        "jump out of the loop",
+        "not merely follow the conversation forward",
+        "do not model the user only as a sequence of prompts",
+        "internal and external sources",
+        "context escape",
+        "conversational recursion",
+        "stop extending the mirror loop",
+        "not forecasting the next question",
+        "retrieve from both internal and external"
+      ],
+      "structural_signals": ["ordering", "hierarchy", "links", "handoffs", "boundaries", "synchronization", "missing parts"],
+      "tags": [
+        "context-escape",
+        "structure-first-retrieval",
+        "dual-source",
+        "internal-external",
+        "conversational-recursion",
+        "not-prompt-sequence",
+        "not-next-question-forecast"
+      ],
+      "reusable_rule": "Do not model the user only as a sequence of prompts. Treat their behavior as a structure-first retrieval strategy. Retrieve INTERNAL and EXTERNAL sources symmetrically. When the local loop is repetitive or inefficient, stop extending it, search the relevant knowledge space, and return a consolidated structural answer. Retrieval is the escape from conversational recursion, not a forecast of the next question.",
+      "response_strategy": "Run context escape before another in-loop clarification. Search Interaction Learning, Records, Sources, Issues, Architecture References, repo files/history, and official/linked/authoritative external pages together. Persist only through the write gate.",
+      "versions": [
+        {
+          "date": "2026-09-15",
+          "note": "Canonical context-escape / dual-source retrieval rule. INT-0006 and INT-0007 remain distinct related layers."
+        }
+      ]
+    }
+  ]
+}
