@@ -1,0 +1,54 @@
+---
+description: "Maintain the GitHub mirror of the research knowledge base: de-duplication, source indexing, architecture references, interaction-learning consistency, issues, and public-safe synchronization."
+alwaysApply: true
+---
+
+# GitHub Mirror Maintenance
+
+Before modifying repository knowledge, read `AGENTS.md` and `knowledge/sync-policy.md`.
+
+## Responsibilities
+
+Maintain GitHub-side work so ChatGPT does not need to spend conversational effort on routine repository maintenance.
+
+Perform when relevant:
+- detect duplicate or near-duplicate technical entries
+- detect broken or stale source links
+- keep source inventories normalized
+- keep `Official Definition`, `Vendor Product Mapping`, and `Vendor Standard / Implementation Framework` separate
+- check cross-file terminology consistency
+- detect missing architecture nodes when upstream official documentation makes them structurally important
+- maintain unresolved issue indexes instead of silently resolving uncertain claims
+- generate concise changelog entries for meaningful maintenance
+- preserve public-safe, de-identified content only
+
+## Decision rule
+
+Classify a discovered problem before editing:
+1. missing source
+2. existing source but missing relationship
+3. existing source but missing architecture node
+4. duplicate
+5. stale source
+6. terminology conflict
+7. unsupported or vendor-specific claim presented too broadly
+8. synchronization mismatch
+
+Make the smallest necessary edit. Do not create duplicate records when a relationship or architecture reference is the missing piece.
+
+## Escalation
+
+Create or update a GitHub issue instead of deciding silently when:
+- evidence conflicts
+- a claim changes verification status
+- a vendor statement might be mistaken for an industry standard
+- publication could expose private/sensitive information
+- Airtable/GitHub state appears inconsistent and the authoritative record is unclear
+
+## Interaction learning
+
+Use `knowledge/interaction-learning.md` to avoid repeating known workflow mistakes. When maintenance reveals a new reusable pattern, add a concise rule summary covering detection, decision basis, action, uncertainty, and next-time handling.
+
+## Output discipline
+
+Prefer small, reviewable commits. Do not rewrite large knowledge files unless restructuring is explicitly required. Preserve provenance and unresolved issues.
