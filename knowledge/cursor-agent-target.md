@@ -20,6 +20,14 @@ All routine GitHub maintenance handoffs should reference this Agent ID and URL, 
 - changelog generation
 - pull-request preparation for public-safe repository maintenance
 
+## Owner communication
+
+Preferred channel: GitHub Issue #1 and related pull requests.
+
+Approval and notification protocol: `knowledge/cursor-approval-protocol.md`
+
+The designated Agent ID above is the GitHub-side target identity. A later Cursor run may have a different execution URL; do not treat a one-off run URL as a replacement for this target unless the owner updates it.
+
 ## Current execution boundary
 
 The repository can store and propagate the Cursor Agent target, but GitHub alone does not prove that the external Cursor Agent has opened, accepted, or executed the task. Treat Cursor execution as confirmed only when explicit Cursor/GitHub output appears.
@@ -30,4 +38,5 @@ The repository can store and propagate the Cursor Agent target, but GitHub alone
 - `.cursor/rules/github-sync-maintenance.mdc`
 - `knowledge/sync-policy.md`
 - `knowledge/interaction-learning.md`
+- `knowledge/cursor-approval-protocol.md`
 - GitHub Issue #1

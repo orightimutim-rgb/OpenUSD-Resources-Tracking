@@ -37,13 +37,32 @@ Cursor should take over GitHub-side maintenance that does not require conversati
 
 Escalate these as a review item instead of silently deciding.
 
+## Owner communication and approval
+
+Preferred owner↔Cursor channel: GitHub Issue #1 and related pull requests.
+
+Full protocol: `knowledge/cursor-approval-protocol.md`
+
+Approval-gated actions require a GitHub comment beginning with `APPROVAL REQUIRED` and explicit owner approval before execution:
+- destructive changes
+- verification-status changes
+- disputed-issue resolution
+- canonical-architecture changes
+- publication of sensitive/contextual material
+- broad refactors
+
+Routine reversible GitHub-side maintenance may proceed without approval when it stays within this file, `.cursor/rules/github-sync-maintenance.mdc`, and `knowledge/sync-policy.md`.
+
+After each meaningful maintenance batch, post a concise status comment on Issue #1 or the corresponding pull request.
+
 ## Required knowledge order before editing
 
 Read these first when relevant:
 1. `knowledge/sync-policy.md`
 2. `knowledge/interaction-learning.md`
-3. `knowledge/chat-sync-2026-09-15.md`
-4. architecture-reference files or source indexes present in the repository
+3. `knowledge/cursor-approval-protocol.md`
+4. `knowledge/chat-sync-2026-09-15.md`
+5. architecture-reference files or source indexes present in the repository (`knowledge/architecture-index.md`, `knowledge/source-index.md`, `knowledge/issue-index.md`)
 
 ## Synchronization principles
 

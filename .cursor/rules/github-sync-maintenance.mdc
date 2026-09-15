@@ -52,6 +52,21 @@ Classify a discovered problem before editing:
 
 Make the smallest necessary edit. Do not create duplicate records when a relationship or architecture reference is the missing piece.
 
+## Owner communication
+
+Use GitHub Issue #1 and related pull requests as the owner↔Cursor communication bridge.
+
+Protocol file: `knowledge/cursor-approval-protocol.md`
+
+Before a destructive change, verification-status change, disputed-issue resolution, canonical-architecture change, publication of sensitive/contextual material, or broad refactor:
+1. post a GitHub comment beginning with `APPROVAL REQUIRED`
+2. include proposed action, files/records affected, reason, risk/uncertainty, and the exact intended change
+3. wait for explicit owner approval
+
+Routine reversible maintenance may proceed without approval when it stays within `AGENTS.md`, this rule, and `knowledge/sync-policy.md`.
+
+After each meaningful maintenance batch, post a concise status comment covering what changed, what was not changed, any unresolved issue, and whether owner action is required.
+
 ## Escalation
 
 Create or update a GitHub issue instead of deciding silently when:
