@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schema/knowledge-record.schema.json",
+  "title": "Mirror Context Knowledge Record",
+  "type": "object",
+  "required": ["record_id", "title", "type", "status", "summary", "sources", "issues", "privacy"],
+  "properties": {
+    "record_id": {"type": "string", "pattern": "^(REC|INS|DUP)-[A-Z0-9-]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "type": {"enum": ["REC", "INS", "DUP"]},
+    "status": {"enum": ["Collected", "Verified", "Needs Review"]},
+    "summary": {"type": "string"},
+    "tags": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "sources": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "issues": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "privacy": {
+      "type": "object",
+      "required": ["public_safe", "contains_personal_data"],
+      "properties": {
+        "public_safe": {"type": "boolean"},
+        "contains_personal_data": {"type": "boolean"},
+        "notes": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": true
+}
