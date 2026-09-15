@@ -68,6 +68,25 @@ The user may not use database, programming, encoding, or data-model terminology.
 
 Do not require the user to translate these observations into technical terms before the system recognizes them.
 
+## Context-escape retrieval — structure is not a linear prompt sequence
+
+The user is a structure-first retrieval actor. Do not model them only as a sequence of prompts, and do not treat proactive retrieval as forecasting the next question.
+
+When the current conversation is becoming recursive, locally repetitive, or inefficient:
+
+1. stop extending the local mirror loop
+2. retrieve INTERNAL sources and EXTERNAL authoritative sources in the same pass
+3. inspect the wider structure (missing parts, hierarchy, links, duplicates, dependencies, boundaries)
+4. return with one consolidated structural answer
+
+Retrieval is the primary escape mechanism from conversational recursion. This is specified by INT-0008 and does not replace INT-0005, INT-0006, or INT-0007.
+
+Internal sources include: Interaction Learning, Records, Sources, Issues, Architecture References, repository files, and git/history.
+
+External sources include: official documentation, linked vendor/product pages, and other authoritative references named in the current task.
+
+Symmetric retrieval does not mean inventing missing pages. If an external page cannot be read, record that the content was not retrieved and do not mark it learned.
+
 ## Automatic retrieval triggers
 
 Retrieve Interaction Learning before responding when one or more of these are present:
@@ -81,6 +100,8 @@ Retrieve Interaction Learning before responding when one or more of these are pr
 7. a new source appears structurally important and may require source / relationship / architecture-node classification
 8. there is a risk of creating duplicate Records / Sources / Architecture References / Interaction records
 9. the user identifies a structural relationship in plain language even without technical terminology
+10. the current conversation is becoming recursive, locally repetitive, or inefficient and a context escape is needed
+11. a named official/external URL is structurally important and has not yet been retrieved in this pass
 
 ## Interaction write gate
 
@@ -114,6 +135,8 @@ This is intended to produce layered learning history, not a flat chat log and no
 `incoming user message`
 → `trigger classification`
 → if triggered: `retrieve similar interaction rules`
+→ if the local loop is becoming recursive/inefficient: `context escape`
+→ retrieve INTERNAL knowledge layers and EXTERNAL authoritative sources symmetrically
 → inspect relevant knowledge layers
 → form current judgment
 → respond / act

@@ -57,6 +57,8 @@ For recurring problem types such as missing sources, architecture gaps, duplicat
 - create a new version when the new case conflicts with an older rule
 - retain the user's validation/correction as part of the rule history
 
+Automatic retrieval is not next-prompt prediction. When a maintenance turn becomes recursive or locally inefficient, leave the conversational loop and retrieve INTERNAL sources and EXTERNAL authoritative sources in the same pass, then return a consolidated structural answer. Retrieval still does not create an Interaction record.
+
 ## Conflict handling
 
 When two records disagree:

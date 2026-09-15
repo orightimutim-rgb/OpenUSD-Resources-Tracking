@@ -23,6 +23,18 @@ Allowed outcomes:
 
 Do not create a new Interaction entry by default. Prefer retrieval-only when an existing rule already covers the case. Prefer update/versioning over creating near-duplicate Interaction entries.
 
+## Context-escape retrieval
+
+Do not model the owner only as a sequence of prompts. Structure is distinct from linear dialogue flow.
+
+When the current maintenance loop is becoming recursive, locally repetitive, or inefficient:
+1. stop extending the mirror loop
+2. retrieve INTERNAL sources (Interaction Learning, Records, Sources, Issues, Architecture References, repo files/history)
+3. retrieve EXTERNAL authoritative sources (official docs, linked pages) in the same pass
+4. return one consolidated structural answer
+
+Retrieval is the escape mechanism. It is not next-prompt prediction. User natural-language structural observations are sufficient triggers even without technical vocabulary. Retrieval must not create an Interaction record.
+
 ## Responsibilities
 
 Maintain GitHub-side work so ChatGPT does not need to spend conversational effort on routine repository maintenance.

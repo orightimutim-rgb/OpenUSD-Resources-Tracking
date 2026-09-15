@@ -14,6 +14,8 @@ For each meaningful structural issue:
 
 Goal: solve a cluster, not one isolated symptom.
 
+Context-escape overlay (INT-0008): if the cluster cannot be solved from the current conversational loop, stop predicting the next prompt. Retrieve internal and external sources, then return one consolidated structural answer. Forward-scan remains local bundling; context-escape is leaving the loop.
+
 ### B. Batch layer — session synthesis
 When several related corrections occur in the same conversation/session:
 - group them by structure, not by message order

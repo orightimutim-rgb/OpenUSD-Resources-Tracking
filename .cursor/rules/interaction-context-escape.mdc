@@ -1,0 +1,37 @@
+---
+description: "When a maintenance loop becomes recursive or inefficient, retrieve internal and external sources instead of predicting the next prompt."
+alwaysApply: true
+---
+
+# Context-escape retrieval (INT-0008)
+
+Canonical specs:
+- `knowledge/interaction-trigger-policy.md`
+- `knowledge/interaction-learning.md` (INT-0008)
+- `knowledge/interaction-optimization-policy.md`
+
+Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
+
+## Do not model the user as a prompt sequence
+
+The owner inspects structure and jumps out of an inefficient conversational loop. Automatic retrieval must match that behavior.
+
+- Internal retrieval: Interaction Learning, Records, Sources, Issues, Architecture References, repository files, git/history
+- External retrieval: official documentation, linked vendor/product pages, other named authoritative references
+- Both sides are required in the same pass when a named external URL is in scope
+
+## Escape, then consolidate
+
+If the current turn is restating the same structural question, mirroring prior wording, or generating serial micro-continuations:
+
+1. stop extending the local loop
+2. retrieve internally and externally
+3. inspect missing parts, hierarchy, links, duplicates, dependencies, and boundaries
+4. return one consolidated structural answer
+5. mark unverified or unread material as unread; do not invent completeness
+
+This is not forecasting the next question. INT-0007 still bundles adjacent GitHub-side work after a structural issue is found. INT-0008 is the rule for leaving the loop.
+
+## Persistence remains gated
+
+Retrieval does not create Interaction records. Writes still require the Interaction Write Gate in `knowledge/interaction-trigger-policy.md`. Preserve prior INT rule states; do not overwrite INT-0005, INT-0006, or INT-0007.

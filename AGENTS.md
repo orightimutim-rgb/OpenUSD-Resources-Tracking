@@ -67,6 +67,8 @@ When a recurring repository problem appears, record the reusable maintenance rul
 
 Do not attempt to reproduce hidden chain-of-thought. Store only concise, reviewable reasoning summaries and decision criteria.
 
+Treat the owner as a structure-first retrieval actor, not as a linear prompt sequence. If a GitHub-side loop is becoming recursive or inefficient, stop extending it. Retrieve INTERNAL repository knowledge and EXTERNAL official sources symmetrically, then return one consolidated structural answer. Do not interpret that retrieval as merely forecasting the next question. Natural-language structural observations are sufficient retrieval triggers.
+
 ## Working style
 
 Prefer small, reviewable commits. Avoid destructive rewrites. For uncertain changes, open or update an issue rather than silently changing canonical knowledge.

@@ -109,6 +109,9 @@ Response strategy:
 Implementation reference:
 - See `knowledge/interaction-trigger-policy.md`.
 
+GitHub-side version note (2026-09-15):
+- Related later layer: INT-0008 (context-escape retrieval). INT-0005 remains the routing / write-gate rule and is not replaced.
+
 Status: ACTIVE_RULE
 
 ## INT-0006 — Structure-first user reasoning signal
@@ -134,6 +137,9 @@ Persistence rule:
 - Retrieval itself does not create a record.
 - When the user's structural judgment creates or changes a reusable rule, persist it additively/versioned so earlier rule states remain traceable.
 
+GitHub-side version note (2026-09-15):
+- Related later layer: INT-0008 (context-escape retrieval). INT-0006 remains the ordinary-language structural-signal rule and is not replaced.
+
 Status: ACTIVE_RULE
 
 ## INT-0007 — Proactive synthesis instead of toothpaste-style interaction
@@ -155,5 +161,45 @@ Reusable rule:
 Maintenance implication:
 - Because Interaction Learning is additive/versioned rather than overwrite-based, it requires periodic consolidation.
 - Consolidation should detect near-duplicates, superseded rules, conflict clusters, stale response strategies, and rules that can be merged into a higher-level abstraction while preserving provenance.
+
+GitHub-side version note (2026-09-15):
+- Related later layer: INT-0008 (context-escape retrieval). INT-0007 remains the local forward-scan / consolidation rule and is not replaced by INT-0008.
+
+Status: ACTIVE_RULE
+
+## INT-0008 — Context-escape retrieval, not next-prompt prediction
+
+Problem detection logic:
+- The user distinguished STRUCTURE from linear dialogue flow.
+- They do not merely follow the conversation forward. They inspect the current loop, recognize when it is becoming inefficient or recursive, and jump OUT of that loop to retrieve information from both internal and external sources.
+- Modeling the user only as a sequence of prompts therefore misses the actual strategy.
+
+User requirement:
+- Automatic retrieval must apply symmetrically to INTERNAL sources (Interaction Learning, Records, Sources, Issues, Architecture References, repository files/history) and EXTERNAL sources (official docs, linked pages, authoritative references).
+- When the current conversation becomes locally repetitive or inefficient, trigger a context escape: stop extending the mirror loop, search the relevant internal/external knowledge space, then return with a consolidated structural answer.
+- Retrieval is the primary escape mechanism from conversational recursion.
+- User natural-language structural observations remain valid retrieval triggers even without technical vocabulary.
+- Do not interpret proactive retrieval as merely forecasting the user's next question.
+
+Assistant judgment summary:
+- INT-0006 covers detecting structural meaning in ordinary language.
+- INT-0007 covers bundling adjacent consequences after a structural issue is found.
+- This rule is a different layer: when the local conversational loop itself is the problem, leave it via retrieval rather than extending it with another predicted prompt.
+
+Reusable rule:
+- Treat the user as a structure-first retrieval actor, not as a linear prompt sequence.
+- If the turn is becoming recursive, inefficient, or mirror-like, stop generating the next local continuation.
+- Retrieve internally and externally in the same pass.
+- Return one consolidated structural answer: what was found, what remains distinct, what is still unverified, and what should not be invented.
+- Retrieval still does not create an Interaction record. Persistence remains gated by INT-0005.
+
+Persistence rule:
+- Preserve INT-0005 / INT-0006 / INT-0007 as historical and still-active related layers.
+- Do not destructively overwrite those rules with this correction.
+
+Uncertainty / risk:
+- Leaving a loop too early can skip needed clarification.
+- Treating a marketing landing page as a complete deep-dive can overstate verification.
+- Next-time handling: escape when the same structural question is being re-asked or locally restated; stay in the loop when a genuine missing fact must come from the user.
 
 Status: ACTIVE_RULE
