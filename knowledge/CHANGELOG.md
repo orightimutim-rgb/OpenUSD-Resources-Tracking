@@ -34,10 +34,11 @@ What did not change:
 - No `SRC-*` IDs were invented.
 - ARCH-0001–ARCH-0005 files were not extracted (`APPROVAL REQUIRED`).
 - YouTube `XeHtw36h-eI` is not marked learned/read.
-- Open PR #2 INT-0005 numbering collision remains `APPROVAL REQUIRED`.
+- INT-0005 numbering collision with PR #2 is resolved (2026-09-19): approval protocol is INT-0010.
 - Open PRs #3–#5 catalog/helper operationalization was not silently merged or closed; adding INT-0008 to that catalog is a rebase follow-up.
 
 Unresolved / approval-gated:
+- INT-0008 still overlaps PR #6; owner choice required before merge.
 - Whether Alpamayo / NuRec / Cosmos / Metropolis / Smart City AI Blueprint need dedicated ARCH nodes.
 - Whether PR #2's full source-index should land separately from this Omniverse hub.
 - Independent verification of YouTube transcript claims and the related Omniverse Cloud APIs blog (not retrieved in this pass).
