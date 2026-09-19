@@ -1,5 +1,20 @@
 # Knowledge Mirror Changelog
 
+## 2026-09-19 — Record INT-0005/INT-0010 writing-authorization split
+
+Trigger classification: `UPDATE_EXISTING` (INT-0005 / INT-0010). No new Interaction ID.
+
+What changed:
+- Recorded owner writing authorization on the ID map: INT-0005 is the action/write gate; INT-0010 is the approval handoff when that gate requires owner authorization.
+- Routine reversible GitHub-side writes remain in-scope without per-write approval.
+- Did not copy PR #2 protocol file bodies onto this branch.
+
+What did not change:
+- INT-0008 (PRs #6/#7) remains `APPROVAL REQUIRED`.
+- PRs #3/#4/#5 were not closed.
+- ARCH-0001–ARCH-0005 extraction remains approval-gated.
+- No Airtable write.
+
 ## 2026-09-19 — PR #2 rebase resolved the INT-0005–INT-0007 drop risk
 
 Trigger classification: `UPDATE_EXISTING` (INT-0005 / INT-0010 map only). No new Interaction ID.

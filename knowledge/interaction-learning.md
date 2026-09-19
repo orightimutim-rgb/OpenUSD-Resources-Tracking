@@ -118,6 +118,7 @@ GitHub-side version note (2026-09-15, additive):
 GitHub-side version note (2026-09-19, additive):
 - Owner approval kept this ID for retrieval/write gating.
 - The owner approval/notification protocol originally drafted as INT-0005 in PR #2 is now `INT-0010`.
+- Later the same day, owner writing authorization clarified: INT-0005 remains the action/write gate; INT-0010 is the approval handoff when that gate requires owner authorization. Routine reversible GitHub-side writes may proceed without per-write approval.
 - This note does not replace the canonical INT-0005 rule text above.
 
 Status: ACTIVE_RULE

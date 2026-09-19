@@ -9,6 +9,15 @@ Owner decision (2026-09-19, PR #2):
 - PR #2 approval/notification protocol is `INT-0010`.
 - History: originally drafted as INT-0005 in PR #2; renumbered by owner approval.
 
+Owner writing authorization (2026-09-19, PR #2; no new INT ID):
+- INT-0005 = action/write gate.
+- INT-0010 = approval handoff when INT-0005 requires owner authorization.
+- Routine, reversible GitHub-side writes inside the established maintenance scope may proceed without per-write approval.
+- Approval is scoped to the gated action or an explicitly defined batch, not blanket future authorization.
+- Pause only the dependent gated action; continue safe independent work.
+- Protocol-derived problems (stale metadata, duplicated approval questions, dependency conflicts, repeated manual burden) return to the INT-0005/INT-0010 routing layer rather than to whoever appears more available.
+- This map does not copy PR #2's protocol file bodies.
+
 ## Canonical IDs on current `main`
 
 | ID | Title | Status |
@@ -27,7 +36,7 @@ Owner decision (2026-09-19, PR #2):
 | --- | --- | --- | --- |
 | INT-0008 | Context-escape / dual-source retrieval | PR #6 and PR #7 | `REVIEW_CONFLICT` — both drafts use INT-0008; near-duplicate; do not silently pick a winner |
 | INT-0009 | Active agency / control loop | PR #8 | Unique vs INT-0010; still pending merge |
-| INT-0010 | Owner approval and GitHub notification protocol | PR #2 | `OWNER_APPROVED` numbering; **rebased onto current `main`** (INT-0005–INT-0007 preserved). Pending merge. |
+| INT-0010 | Owner approval and GitHub notification protocol | PR #2 | `OWNER_APPROVED` numbering and writing-handoff role; rebased onto current `main`. Pending merge. |
 
 ## Open PR re-evaluation (PRs #3–#9)
 
@@ -35,7 +44,7 @@ Owner decision (2026-09-19, PR #2):
 | --- | --- | --- | --- |
 | #3 | Older retrieval-trigger operationalization (catalog/helper) | Uses INT-0005 correctly as retrieval/write gating, but predates INT-0006/INT-0007 | Superseded by PR #4 / PR #5. Do not merge as-is. |
 | #4 | Retrieve-vs-write + INT-0006 operationalization + this ID map | INT-0005 kept; INT-0010 reserved | Keep as the numbering/re-evaluation PR. Overlaps PR #5 on catalog/helper. |
-| #5 | INT-0007 operationalization (forward-scan/consolidation helper) | Still textually warns about the old PR #2 INT-0005 collision | Rebase notes onto INT-0010. Catalog/helper is the later operationalization of INT-0005–0007. |
+| #5 | INT-0007 operationalization (forward-scan/consolidation helper) | INT-0005 collision wording annotated as resolved to INT-0010 | Catalog/helper is the later operationalization of INT-0005–0007. Overlaps PRs #3/#4 tooling. |
 | #6 | Draft INT-0008 structure-first retrieval and context escape | Collides with PR #7 on INT-0008 | `APPROVAL REQUIRED` before merge. Prefer one canonical INT-0008; version the other additively. |
 | #7 | Draft INT-0008 context-escape retrieval, not next-prompt prediction | Collides with PR #6 on INT-0008 | Same `APPROVAL REQUIRED` as PR #6. Also adds Omniverse continuation files. |
 | #8 | Draft INT-0009 active agency / control loop | Does not collide with INT-0010 | Safe numbering. Do not silently reassign PR #6/#7 INT-0008. |
