@@ -145,3 +145,25 @@ GitHub-side version note (2026-09-15, additive):
 - Matching INT-0006 is a retrieval/review trigger, not an automatic persist.
 
 Status: ACTIVE_RULE
+
+## INT-0007 — Proactive synthesis instead of toothpaste-style interaction
+
+Problem detection logic:
+- The user identified a costly interaction pattern: the assistant proposes one point, the user detects one downstream structural issue, the assistant proposes another fix, and the cycle repeats many times.
+- The problem is not lack of answers; it is insufficient proactive synthesis across the full conversation structure.
+
+Assistant judgment summary:
+- The interaction system should not wait for the user to discover every adjacent structural consequence one by one.
+- After detecting a meaningful structural issue, the assistant should scan the surrounding workflow for likely adjacent gaps, dependencies, maintenance needs, and second-order effects before replying.
+
+Reusable rule:
+- When a structural correction is detected, perform a local forward-scan before responding.
+- Return: current issue, likely adjacent issues, recommended combined change, what should remain unchanged, and any maintenance implication.
+- Prefer one compact batch decision over multiple serial micro-decisions when confidence is sufficient.
+- Do not over-automate uncertain changes; bundle them as review candidates instead.
+
+Maintenance implication:
+- Because Interaction Learning is additive/versioned rather than overwrite-based, it requires periodic consolidation.
+- Consolidation should detect near-duplicates, superseded rules, conflict clusters, stale response strategies, and rules that can be merged into a higher-level abstraction while preserving provenance.
+
+Status: ACTIVE_RULE
