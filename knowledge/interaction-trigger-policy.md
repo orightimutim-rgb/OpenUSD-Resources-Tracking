@@ -81,6 +81,7 @@ Retrieve Interaction Learning before responding when one or more of these are pr
 7. a new source appears structurally important and may require source / relationship / architecture-node classification
 8. there is a risk of creating duplicate Records / Sources / Architecture References / Interaction records
 9. the user identifies a structural relationship in plain language even without technical terminology
+10. a named vendor portal or developer page is treated as a finished summary while first-level linked branches remain unread — retrieve the existing source plus the portal tree map (`knowledge/omniverse-developer-portal-tree.md` when Omniverse Developer is in scope) instead of creating a new Interaction record
 
 ## Interaction write gate
 
@@ -94,6 +95,8 @@ Write only if at least one of these is true:
 - a repeated failure pattern is identified
 - a new synchronization checkpoint becomes necessary
 - an old rule is now obsolete, conflicting, or requires versioning
+
+Continuing-correction stream: if the user is refining an already-active structural correction (for example, portal-as-tree vs landing-page summary), classify `UPDATE_EXISTING` on the covering rule and do not mint a new Interaction ID.
 
 Otherwise keep the interaction database unchanged.
 

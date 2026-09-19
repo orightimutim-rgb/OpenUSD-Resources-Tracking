@@ -19,6 +19,7 @@ All routine GitHub maintenance handoffs should reference this Agent ID and URL, 
 - issue triage
 - changelog generation
 - pull-request preparation for public-safe repository maintenance
+- vendor portal tree maps (Omniverse Developer: `knowledge/omniverse-developer-portal-tree.md`)
 
 ## Owner communication
 
@@ -39,4 +40,5 @@ The repository can store and propagate the Cursor Agent target, but GitHub alone
 - `knowledge/sync-policy.md`
 - `knowledge/interaction-learning.md`
 - `knowledge/cursor-approval-protocol.md`
+- `knowledge/omniverse-developer-portal-tree.md`
 - GitHub Issue #1

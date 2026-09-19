@@ -37,3 +37,28 @@ What was not changed:
 
 - INT-0008 was not assigned; PRs #6 and #7 still collide.
 - PRs #3–#9 were not rebased or closed from this branch.
+
+## 2026-09-15 — Omniverse Developer portal as knowledge tree (PR #9)
+
+What changed:
+
+- Classified as `UPDATE_EXISTING` on INT-0001 / INT-0005 / INT-0006 / INT-0007. No new Interaction ID.
+- Added `knowledge/omniverse-developer-portal-tree.md` and `.json` so later turns can retrieve first-level Omniverse Developer links without re-feeding the root URL.
+- Root https://developer.nvidia.com/omniverse is an **entry node** (`Partial`). Linked Agent Skills, ov* tools, SimReady/USD tools, simulation libraries, blueprints, and the 57-item learning catalog remain unread unless already covered by an existing source.
+- No `SRC-*` IDs invented. Airtable was not written. ISSUE-0001–ISSUE-0010 unchanged.
+
+## 2026-09-19 — Compose portal tree with PR #2 indexes
+
+What changed:
+
+- Rebased PR #9 onto PR #2 so this changelog and the source/architecture indexes compose.
+- Keep `main` INT-0005 (retrieval/write gating). Approval protocol remains INT-0010 on PR #2. This PR still creates no Interaction ID.
+- Source index: Omniverse Developer row is an entry node (`Partial`) pointing at `knowledge/omniverse-developer-portal-tree.md`.
+- Architecture index: the portal tree expands ARCH-0003 evidence; it does not extract ARCH files.
+- Issue index: added ISSUE-GH-008 for the live Warp Learn More URL coinciding with Newton.
+
+What was not changed:
+
+- No Airtable write.
+- ARCH-0001–ARCH-0005 files were not extracted.
+- INT-0008 collision on PRs #6/#7 was not resolved from this branch.

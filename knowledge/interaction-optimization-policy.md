@@ -19,6 +19,7 @@ When several related corrections occur in the same conversation/session:
 - group them by structure, not by message order
 - detect whether they belong to one higher-level rule
 - prefer updating/versioning one Interaction over creating many micro-records
+- do not create one Interaction record per correction in a continuing stream
 - summarize remaining unresolved structural questions before the session drifts into repetitive turns
 
 ### C. Periodic layer — consolidation maintenance

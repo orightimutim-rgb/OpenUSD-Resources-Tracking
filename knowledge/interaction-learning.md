@@ -18,6 +18,12 @@ Assistant judgment summary:
 User validation:
 - The user emphasized that the reasoning process used to detect and correct the omission must itself become reusable data.
 
+GitHub-side version note (2026-09-15, Omniverse Developer portal):
+- A named vendor developer page that already exists as a source can still be missing its **linked knowledge tree**.
+- Treat such a page as an entry node, not completion. Enumerate first-level sections/links, compare each against Records / Sources / Architecture References, then add relationships or a directory map instead of duplicating the root source.
+- Do not mark the root fully learned/read while linked branches remain unread.
+- This correction is merged into INT-0001 rather than creating a new Interaction ID.
+
 Status: ACTIVE_RULE
 
 ## INT-0002 — Synchronization transparency
@@ -109,6 +115,10 @@ Response strategy:
 Implementation reference:
 - See `knowledge/interaction-trigger-policy.md`.
 
+GitHub-side version note (2026-09-15):
+- Continuing Omniverse Developer deep-read correction: do **not** create one Interaction record per correction. Merge into this continuing stream (INT-0001 / INT-0005 / INT-0006 / INT-0007).
+- Retrieval and directory mapping still do not create Interaction records.
+
 Status: ACTIVE_RULE
 
 ## INT-0006 — Structure-first user reasoning signal
@@ -134,6 +144,10 @@ Persistence rule:
 - Retrieval itself does not create a record.
 - When the user's structural judgment creates or changes a reusable rule, persist it additively/versioned so earlier rule states remain traceable.
 
+GitHub-side version note (2026-09-15):
+- Ordinary-language observations that a page is a root/portal/tree rather than a finished summary are structure-first signals (hierarchy, missing branches, entry vs completion).
+- Translate that into: enumerate first-level links, compare inventory, track Read / Partial / Pending. Do not require the user to re-feed child URLs on later turns.
+
 Status: ACTIVE_RULE
 
 ## INT-0007 — Proactive synthesis instead of toothpaste-style interaction
@@ -155,6 +169,10 @@ Reusable rule:
 Maintenance implication:
 - Because Interaction Learning is additive/versioned rather than overwrite-based, it requires periodic consolidation.
 - Consolidation should detect near-duplicates, superseded rules, conflict clusters, stale response strategies, and rules that can be merged into a higher-level abstraction while preserving provenance.
+
+GitHub-side version note (2026-09-15):
+- Forward-scan for the Omniverse Developer correction: once the root was identified as an entry node, enumerate Agent Skills, ov* tools, SimReady/USD tools, simulation libraries, blueprints, and docs/resources in one directory map rather than serial landing-page summaries.
+- Adjacent review candidates (Warp URL coinciding with Newton; Smart Cities blueprint vs landing page; ovphysx as relationship under PhysX) are bundled, not silently resolved.
 
 Status: ACTIVE_RULE
 

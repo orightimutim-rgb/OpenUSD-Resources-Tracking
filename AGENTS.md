@@ -75,6 +75,7 @@ Read these first when relevant:
 - Preserve version history instead of overwriting conflicting knowledge without explanation.
 - `Official Definition`, `Vendor Product Mapping`, and `Vendor Standard / Implementation Framework` are distinct categories.
 - A vendor definition is not automatically an industry-wide definition or formal standard.
+- A vendor developer portal that already exists as a source is an entry node, not a completed landing-page summary. Retrieve its first-level tree (`knowledge/omniverse-developer-portal-tree.md` for NVIDIA Omniverse Developer) and do not create a new Interaction record for each continuing correction.
 
 ## Interaction-learning rule
 

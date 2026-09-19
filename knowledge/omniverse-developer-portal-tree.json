@@ -1,0 +1,205 @@
+{
+  "github_node": "GH-OV-DEV-PORTAL-TREE",
+  "status": "WORKING",
+  "retrieved": "2026-09-15",
+  "root": {
+    "id": "ov-dev-root",
+    "name": "NVIDIA Omniverse Developer",
+    "title_live": "NVIDIA Omniverse Libraries",
+    "url": "https://developer.nvidia.com/omniverse",
+    "role": "entry_node_not_completion",
+    "read_status": "Partial",
+    "inventory_match": "existing_named_source",
+    "do_not_duplicate_source": true,
+    "fully_learned": false,
+    "airtable_src_id": null,
+    "architecture_links": ["ARCH-0003", "ARCH-0004"]
+  },
+  "read_status_vocab": ["Read", "Partial", "Pending"],
+  "compared_against": [
+    "knowledge/chat-sync-2026-09-15.md#10",
+    "unmerged PR #2 knowledge/source-index.md",
+    "unmerged PR #7 knowledge/omniverse-research-index.md",
+    "Airtable not queried this pass"
+  ],
+  "sections": [
+    {
+      "id": "quick-links",
+      "name": "Quick links / docs and community",
+      "read_status": "Partial",
+      "nodes": [
+        {"id": "learning-library-anchor", "name": "Learning Library", "url": "https://developer.nvidia.com/omniverse#library", "read_status": "Partial"},
+        {"id": "choose-library", "name": "Choose a Library", "url": "https://developer.nvidia.com/omniverse#build-with-libraries", "read_status": "Partial"},
+        {"id": "use-agent-skills", "name": "Use Agent Skills", "url": "https://developer.nvidia.com/omniverse#agents-skills", "read_status": "Partial"},
+        {"id": "start-blueprint", "name": "Start With a Blueprint", "url": "https://developer.nvidia.com/omniverse#blueprints", "read_status": "Partial"},
+        {"id": "physical-ai-learning-path", "name": "Follow a Learning Path", "url": "https://docs.nvidia.com/learning/physical-ai/", "read_status": "Pending", "inventory_match": "missing_source"},
+        {"id": "github-org", "name": "GitHub", "url": "https://github.com/NVIDIA-Omniverse", "read_status": "Pending", "inventory_match": "missing_source"},
+        {"id": "docs-hub", "name": "Docs", "url": "https://docs.omniverse.nvidia.com/", "read_status": "Pending", "inventory_match": "missing_source"},
+        {"id": "community", "name": "Community", "url": "https://developer.nvidia.com/omniverse/community", "read_status": "Pending", "inventory_match": "missing_source"},
+        {"id": "omniverse-labs", "name": "Omniverse Labs", "url": "https://nvidia-omniverse.github.io/omniverse-labs/", "read_status": "Pending", "inventory_match": "missing_source"}
+      ]
+    },
+    {
+      "id": "agent-skills",
+      "name": "Omniverse AI Agent Skills",
+      "catalog_url": "https://github.com/NVIDIA/skills",
+      "read_status": "Pending",
+      "inventory_match": "missing_source",
+      "nodes": [
+        {"id": "skill-cad-to-simready", "name": "CAD to SimReady", "url": "https://github.com/NVIDIA/skills/tree/main/skills/omniverse-cad-to-simready", "read_status": "Pending"},
+        {"id": "skill-defect-image-generation", "name": "Defect Image Generation", "url": "https://github.com/NVIDIA/skills/tree/main/skills/physical-ai-defect-image-generation", "read_status": "Pending"},
+        {"id": "skill-neural-reconstruction", "name": "Neural Reconstruction", "url": "https://github.com/NVIDIA/skills/tree/main/skills/physical-ai-neural-reconstruction", "read_status": "Pending", "keep_distinct_from": ["nurec", "unmerged-pr7-av-sim", "unmerged-pr7-youtube-XeHtw36h-eI"]},
+        {"id": "skill-realtime-viewer", "name": "Realtime Viewer", "url": "https://github.com/NVIDIA/skills/tree/main/skills/omniverse-realtime-viewer", "read_status": "Pending"},
+        {"id": "skill-video-data-augmentation", "name": "Video Data Augmentation", "url": "https://github.com/NVIDIA/skills/tree/main/skills/physical-ai-video-data-augmentation", "read_status": "Pending"},
+        {"id": "skill-usd-performance-tuning", "name": "USD Performance Tuning", "url": "https://github.com/NVIDIA/skills/tree/main/skills/omniverse-usd-performance-tuning", "read_status": "Pending"}
+      ]
+    },
+    {
+      "id": "omniverse-tools",
+      "name": "Omniverse Tools for Agents",
+      "read_status": "Pending",
+      "nodes": [
+        {"id": "ovphysx", "name": "ovphysx", "url": "https://github.com/NVIDIA-Omniverse/PhysX/tree/main/ovphysx", "read_status": "Pending", "inventory_match": "missing_relationship_under_existing_physx", "do_not_duplicate_source": true, "architecture_links": ["ARCH-0005"]},
+        {"id": "ovrtx", "name": "ovrtx", "url": "https://github.com/nvidia-omniverse/ovrtx", "read_status": "Pending", "inventory_match": "missing_source"},
+        {"id": "ovstage", "name": "ovstage", "url": "http://github.com/nvidia-omniverse/ovstage", "read_status": "Pending", "inventory_match": "missing_source", "published_scheme": "http", "https_candidate_unverified": true},
+        {"id": "ovstorage", "name": "ovstorage", "url": "https://github.com/NVIDIA-Omniverse/ovstorage", "read_status": "Pending", "inventory_match": "missing_source"},
+        {"id": "ovstream", "name": "ovstream", "url": "https://github.com/nvidia-omniverse/ovstream", "read_status": "Pending", "inventory_match": "missing_source"},
+        {"id": "ovui", "name": "ovui", "url": "http://github.com/NVIDIA-omniverse/ovui", "read_status": "Pending", "inventory_match": "missing_source", "published_scheme": "http", "https_candidate_unverified": true},
+        {"id": "simready-foundation", "name": "SimReady Foundation", "url": "https://github.com/nvidia/simready-foundation", "read_status": "Pending", "inventory_match": "missing_source"},
+        {"id": "simready-validate", "name": "simready-validate", "url": "https://github.com/NVIDIA/simready-foundation", "read_status": "Pending", "inventory_match": "missing_source", "same_repo_as": "simready-foundation"},
+        {"id": "usd-agents", "name": "usd-agents", "url": "https://github.com/NVIDIA-Omniverse/content-agents", "read_status": "Pending", "inventory_match": "missing_relationship_under_openusd"},
+        {"id": "usd-search", "name": "usd-search", "url": "https://github.com/NVIDIA-Omniverse/usd-search", "read_status": "Pending", "inventory_match": "missing_relationship_under_openusd"},
+        {"id": "usd-convert-asset", "name": "usd-convert-asset", "url": "https://github.com/NVIDIA-Omniverse/usd-convert-asset", "read_status": "Pending", "inventory_match": "missing_relationship_under_openusd"},
+        {"id": "usd-convert-gsplat", "name": "usd-convert-gsplat", "url": "https://github.com/NVIDIA-Omniverse/usd-convert-gsplat", "read_status": "Pending", "inventory_match": "missing_relationship_under_openusd", "keep_distinct_from": ["nurec"]},
+        {"id": "mujoco-usd-converter", "name": "mujoco-usd-converter", "url": "https://github.com/newton-physics/mujoco-usd-converter", "read_status": "Pending", "inventory_match": "missing_source", "keep_distinct_from": ["physx"]},
+        {"id": "urdf-usd-converter", "name": "urdf-usd-converter", "url": "https://github.com/newton-physics/urdf-usd-converter", "read_status": "Pending", "inventory_match": "missing_source", "keep_distinct_from": ["physx"]},
+        {"id": "usd-exchange", "name": "usd-exchange", "url": "https://github.com/NVIDIA-Omniverse/usd-exchange", "read_status": "Pending", "inventory_match": "missing_relationship_under_openusd"},
+        {"id": "usd-optimize", "name": "usd-optimize", "url": "https://github.com/NVIDIA-Omniverse/usd-optimize", "read_status": "Pending", "inventory_match": "missing_relationship_under_openusd"},
+        {"id": "usd-validation-nvidia", "name": "usd-validation-nvidia", "url": "https://github.com/NVIDIA-Omniverse/usd-validation-nvidia", "read_status": "Pending", "inventory_match": "missing_relationship_under_openusd"},
+        {"id": "openusd", "name": "OpenUSD", "url": "https://developer.nvidia.com/openusd", "read_status": "Partial", "inventory_match": "existing_named_source", "do_not_duplicate_source": true, "architecture_links": ["ARCH-0003"]}
+      ]
+    },
+    {
+      "id": "simulation-libraries",
+      "name": "Simulation Libraries for Physical AI",
+      "read_status": "Partial",
+      "nodes": [
+        {"id": "newton-physics", "name": "Newton Physics", "url": "https://developer.nvidia.com/newton-physics", "read_status": "Pending", "inventory_match": "missing_source", "keep_distinct_from": ["physx", "warp"]},
+        {"id": "nurec", "name": "NuRec", "url": "https://docs.nvidia.com/nurec/index.html", "read_status": "Pending", "inventory_match": "missing_source", "related_dataset_unretrieved": "https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-NuRec", "keep_distinct_from": ["physx", "unmerged-pr7-av-sim"]},
+        {"id": "physx", "name": "PhysX", "url": "https://github.com/NVIDIA-Omniverse/PhysX", "alt_url": "https://developer.nvidia.com/physx-sdk", "read_status": "Partial", "inventory_match": "existing_named_source", "do_not_duplicate_source": true, "architecture_links": ["ARCH-0005", "ARCH-0003"], "unmerged_github_node": "knowledge/deep-dives/physx-sdk.md"},
+        {"id": "physicsnemo", "name": "PhysicsNeMo", "url": "https://developer.nvidia.com/physicsnemo", "read_status": "Pending", "inventory_match": "missing_source"},
+        {"id": "warp", "name": "NVIDIA Warp", "url": "https://developer.nvidia.com/newton-physics", "read_status": "Pending", "inventory_match": "missing_source", "open_defect": "live_learn_more_url_equals_newton", "keep_distinct_from": ["newton-physics", "physx"]},
+        {"id": "omniverse-labs-sim", "name": "Omniverse Labs", "url": "https://nvidia-omniverse.github.io/omniverse-labs/", "read_status": "Pending", "inventory_match": "missing_source", "same_as": "omniverse-labs"}
+      ]
+    },
+    {
+      "id": "blueprints",
+      "name": "Blueprints and Agent Workflows",
+      "read_status": "Pending",
+      "inventory_match": "missing_source",
+      "nodes": [
+        {"id": "bp-dsx-ai-factories", "name": "DSX Gigawatt-Scale AI Factories", "url": "https://build.nvidia.com/nvidia/omniverse-dsx-blueprint-for-ai-factories", "read_status": "Pending"},
+        {"id": "bp-gr00t-mimic", "name": "GR00T-Mimic Synthetic Robot Manipulation", "url": "https://build.nvidia.com/nvidia/isaac-gr00t-synthetic-manipulation", "read_status": "Pending", "keep_distinct_from": ["isaac-sim", "isaac-lab"]},
+        {"id": "bp-mega-fleets", "name": "Mega Multi-Robot Industrial Fleets", "url": "https://build.nvidia.com/nvidia/mega-multi-robot-fleets-for-industrial-automation", "read_status": "Pending"},
+        {"id": "bp-agent-skills-sdg", "name": "Agent Skills for Synthetic Data Generation", "url": "https://brev.nvidia.com/physical-ai", "read_status": "Pending"},
+        {"id": "bp-fluid-digital-twin", "name": "Digital Twin for Interactive Fluid Simulation", "url": "https://developer.nvidia.com/omniverse#", "read_status": "Pending", "open_defect": "root_page_hash_only", "learning_json_candidate_url": "https://build.nvidia.com/nvidia/digital-twins-for-fluid-simulation"},
+        {"id": "bp-smart-cities-dt", "name": "Digital Twins for Smart Cities", "url": "https://docs.nvidia.com/vss/3.1.0/smartcity-docs/smartcity-toc.html", "read_status": "Pending", "keep_distinct_from": ["unmerged-pr7-smart-cities-landing"]}
+      ]
+    },
+    {
+      "id": "learning-resources",
+      "name": "Omniverse Learning Resources",
+      "catalog_url": "https://developer.nvidia.com/search-data/omniverse.json",
+      "read_status": "Partial",
+      "note": "Catalog listing retrieved. Individual documents are not marked learned/read.",
+      "item_count": 57,
+      "nodes": [
+        {"name": "Accelerating AV Simulation with Neural Reconstruction and WFMs", "url": "https://developer.nvidia.com/blog/accelerating-av-simulation-with-neural-reconstruction-and-world-foundation-models/", "read_status": "Pending"},
+        {"name": "Build and Orchestrate End-to-End SDG Workflows with NVIDIA Isaac Sim and NVIDIA OSMO", "url": "https://developer.nvidia.com/blog/build-synthetic-data-pipelines-to-train-smarter-robots-with-nvidia-isaac-sim/", "read_status": "Pending"},
+        {"name": "NVIDIA Omniverse Foundational Technology Montage", "url": "https://www.youtube.com/watch?v=wIvpOtU3e_A", "read_status": "Pending"},
+        {"name": "Industrial AI and Robotics Conference Sessions - GTC Paris", "url": "https://www.nvidia.com/en-eu/gtc/sessions/industrial-ai-and-robotics/", "read_status": "Pending"},
+        {"name": "Action Graph Quickstart", "url": "https://docs.omniverse.nvidia.com/extensions/latest/ext_omnigraph/tutorials/quickstart.html", "read_status": "Pending"},
+        {"name": "Defect Detection", "url": "https://docs.omniverse.nvidia.com/workflows/latest/defect-detection.html", "read_status": "Pending"},
+        {"name": "Data Aggregation and Navigation Guide", "url": "https://docs.omniverse.nvidia.com/dang/latest/index.html", "read_status": "Pending"},
+        {"name": "Viewport Code Samples", "url": "https://docs.omniverse.nvidia.com/dev-guide/latest/programmer_ref/viewport.html", "read_status": "Pending"},
+        {"name": "Physics Code Samples", "url": "https://docs.omniverse.nvidia.com/dev-guide/latest/programmer_ref/physics.html", "read_status": "Pending"},
+        {"name": "Omniverse Embedded Web Viewer Guide", "url": "https://docs.omniverse.nvidia.com/embedded-web-viewer/latest/index.html", "read_status": "Pending"},
+        {"name": "Connect Samples for the Omniverse Connect SDK", "url": "https://github.com/NVIDIA-Omniverse/connect-samples", "read_status": "Pending"},
+        {"name": "Develop Custom Physical AI Foundation Models with NVIDIA Cosmos Predict-2", "url": "https://developer.nvidia.com/blog/develop-custom-physical-ai-foundation-models-with-nvidia-cosmos-predict-2/", "read_status": "Pending"},
+        {"name": "Building Gigawatt-Scale AI Factories With Digital Twins", "url": "https://www.youtube.com/watch?v=TRc0z_qcze0", "read_status": "Pending"},
+        {"name": "GR00T N1", "url": "https://www.youtube.com/watch?v=m1CH-mgpdYg", "read_status": "Pending"},
+        {"name": "Synthetic Manipulation Motion Generation for Robotics", "url": "https://build.nvidia.com/nvidia/isaac-gr00t-synthetic-manipulation/blueprintcard", "read_status": "Pending"},
+        {"name": "Build a Digital Twin for Interactive Fluid Simulation", "url": "https://build.nvidia.com/nvidia/digital-twins-for-fluid-simulation", "read_status": "Pending"},
+        {"name": "Creating and Customizing an Omniverse Extension", "url": "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-OV-16+V1", "read_status": "Pending"},
+        {"name": "User Interface Code Samples", "url": "https://docs.omniverse.nvidia.com/dev-guide/latest/programmer_ref/ui.html", "read_status": "Pending"},
+        {"name": "Audio Code Samples", "url": "https://docs.omniverse.nvidia.com/dev-guide/latest/programmer_ref/audio.html", "read_status": "Pending"},
+        {"name": "Omniverse Kit-App-Template", "url": "https://github.com/NVIDIA-Omniverse/kit-app-template", "read_status": "Pending"},
+        {"name": "Omniverse API Connection Tutorial", "url": "https://github.com/NVIDIA-Omniverse/kit-extension-sample-apiconnect", "read_status": "Pending"},
+        {"name": "Developers Build Fast and Reliable Robot Simulations with NVIDIA Omniverse Libraries", "url": "https://developer.nvidia.com/blog/developers-build-fast-and-reliable-robot-simulations-with-nvidia-omniverse-libraries/", "read_status": "Pending"},
+        {"name": "Building Photorealistic Digital Twins With Siemens Teamcenter Digital Reality Viewer", "url": "https://developer.nvidia.com/blog/building-photorealistic-digital-twins-with-siemens-teamcenter-digital-reality-viewer/", "read_status": "Pending"},
+        {"name": "Newton, an Open-Source Physics Engine for Robotics Simulation", "url": "https://developer.nvidia.com/blog/announcing-newton-an-open-source-physics-engine-for-robotics-simulation/", "read_status": "Pending"},
+        {"name": "Research Advances in AI-Assisted Material Generation for Physical AI", "url": "https://www.youtube.com/watch?v=M1_xa7GXJlg", "read_status": "Pending"},
+        {"name": "Neural Reconstruction for Robotics and Autonomous Vehicles", "url": "https://www.youtube.com/watch?v=e3dfXj6ATA0", "read_status": "Pending"},
+        {"name": "Europe's Next Industrial Revolution Has Arrived", "url": "https://www.youtube.com/watch?v=Sj-nSKZCcyU", "read_status": "Pending"},
+        {"name": "Test Multi-Robot Fleets for Industrial Automation", "url": "https://build.nvidia.com/nvidia/mega-multi-robot-fleets-for-industrial-automation/blueprintcard", "read_status": "Pending"},
+        {"name": "RTX Best Practices for Realtime Configurators", "url": "https://docs.omniverse.nvidia.com/guide_rtx-best-practices/latest/index.html", "read_status": "Pending"},
+        {"name": "Generative AI Reference Architecture", "url": "https://docs.omniverse.nvidia.com/arch-diagrams/latest/ref-arch-diagrams/gen-ai-diagram.html", "read_status": "Pending"},
+        {"name": "Generative AI for Digital Twins Guide", "url": "https://docs.omniverse.nvidia.com/guide-sdg/latest/index.html", "read_status": "Pending"},
+        {"name": "OpenUSD: Connecting Any Data Source", "url": "https://www.youtube.com/watch?v=VMpwpUvaXSU", "read_status": "Pending"},
+        {"name": "Developing an AI Background Generator With NIM", "url": "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-OV-18+V1", "read_status": "Pending"},
+        {"name": "OpenUSD Exchange SDK", "url": "https://docs.omniverse.nvidia.com/usd/code-docs/usd-exchange-sdk/latest/index.html", "read_status": "Pending"},
+        {"name": "Principles of Scalable Asset Structure", "url": "https://docs.omniverse.nvidia.com/usd/latest/learn-openusd/independent/asset-structure-principles.html", "read_status": "Pending"},
+        {"name": "Product Configurator Reference Architecture", "url": "https://docs.omniverse.nvidia.com/arch-diagrams/latest/ref-arch-diagrams/prod-config-diagram.html", "read_status": "Pending"},
+        {"name": "Factory Digital Twin Reference Architecture", "url": "https://docs.omniverse.nvidia.com/arch-diagrams/latest/ref-arch-diagrams/factory-dt-diagram.html", "read_status": "Pending"},
+        {"name": "End-to-End Configurator Example Guide", "url": "https://docs.omniverse.nvidia.com/auto-config/latest/index.html", "read_status": "Pending"},
+        {"name": "Units in USD", "url": "https://docs.omniverse.nvidia.com/usd/latest/learn-openusd/independent/units.html", "read_status": "Pending"},
+        {"name": "OpenUSD Code Samples", "url": "https://docs.omniverse.nvidia.com/dev-guide/latest/programmer_ref/usd.html", "read_status": "Pending"},
+        {"name": "OpenUSD Source Code", "url": "https://github.com/PixarAnimationStudios/OpenUSD", "read_status": "Pending"},
+        {"name": "Using OpenUSD for Modular and Scalable Robotic Simulation and Deployment", "url": "https://developer.nvidia.com/blog/using-openusd-for-modular-and-scalable-robotic-simulation-and-deployment/", "read_status": "Pending"},
+        {"name": "How to Build a Native OpenUSD XR Application", "url": "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-OV-12+V1", "read_status": "Pending"},
+        {"name": "OpenUSD: Composition and Layering", "url": "https://www.youtube.com/watch?v=zRyKI55qEZY", "read_status": "Pending"},
+        {"name": "How to Build OpenUSD Applications for Industrial Digital Twins", "url": "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-OV-13+V1", "read_status": "Pending"},
+        {"name": "OpenUSD: Custom Schemas", "url": "https://www.youtube.com/watch?v=-iCUjNk2aiA", "read_status": "Pending"},
+        {"name": "Fundamentals of Working With OpenUSD for Creators", "url": "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-OV-15+V1", "read_status": "Pending"},
+        {"name": "Learn OpenUSD Learning Path", "url": "https://www.nvidia.com/en-us/learn/learning-path/openusd/", "read_status": "Pending"},
+        {"name": "OpenUSD: da Vinci's Workshop Dataset", "url": "https://docs.omniverse.nvidia.com/usd/latest/usd_content_samples/davinci_workshop.html", "read_status": "Pending"},
+        {"name": "OpenUSD Product Configurator Guide", "url": "https://docs.omniverse.nvidia.com/usd-pcg/latest/index.html", "read_status": "Pending"},
+        {"name": "Omniverse Developer Guide", "url": "https://docs.omniverse.nvidia.com/dev-guide/latest/index.html", "read_status": "Pending"},
+        {"name": "OpenUSD: Residential Lobby Dataset", "url": "https://docs.omniverse.nvidia.com/usd/latest/usd_content_samples/sample_content.html", "read_status": "Pending"},
+        {"name": "Building a 3D Product Configurator With USD and Omniverse", "url": "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-OV-14+V1", "read_status": "Pending"},
+        {"name": "OpenUSD: Four Superpowers to Get You Started", "url": "https://www.youtube.com/watch?v=1RnTSZK9SwM", "read_status": "Pending"},
+        {"name": "Developing an Omniverse Kit-Based Application", "url": "https://docs.omniverse.nvidia.com/kit/docs/kit-app-template/latest/docs/intro.html", "read_status": "Pending"},
+        {"name": "How to Instantly Render Real-World Scenes in Interactive Simulation", "url": "https://developer.nvidia.com/blog/how-to-instantly-render-real-world-scenes-in-interactive-simulation/", "read_status": "Pending"},
+        {"name": "Simplify End-to-End Autonomous Vehicle Development with New NVIDIA Cosmos World Foundation Models", "url": "https://developer.nvidia.com/blog/simplify-end-to-end-autonomous-vehicle-development-with-new-nvidia-cosmos-world-foundation-models/", "read_status": "Pending"}
+      ]
+    }
+  ],
+  "keep_distinct": [
+    "PhysX != Newton != Warp != PhysicsNeMo != NuRec",
+    "Omniverse Developer portal != Omniverse commercial page",
+    "Smart Cities blueprint != Smart Cities landing page",
+    "usd-convert-gsplat != NuRec",
+    "ovphysx != new PhysX source",
+    "Official Definition != Vendor Product Mapping != Vendor Standard / Implementation Framework"
+  ],
+  "unmerged_related_nodes": [
+    {"pr": 7, "path": "knowledge/omniverse-research-index.md"},
+    {"pr": 7, "path": "knowledge/deep-dives/physx-sdk.md"},
+    {"pr": 7, "path": "knowledge/deep-dives/autonomous-vehicle-simulation.md"},
+    {"pr": 7, "path": "knowledge/deep-dives/smart-cities-and-spaces.md"},
+    {"pr": 7, "path": "knowledge/deep-dives/youtube-xehtw36h-ei.md"}
+  ],
+  "open_defects": [
+    "warp_learn_more_url_equals_newton",
+    "fluid_blueprint_root_hash_vs_learning_json_url",
+    "simready_validate_same_repo_as_foundation",
+    "ovstage_ovui_published_http",
+    "airtable_src_bindings_unverified",
+    "arch_files_not_extracted_on_main"
+  ],
+  "interaction_merge": {
+    "new_int_created": false,
+    "classified_as": "UPDATE_EXISTING",
+    "merged_into": ["INT-0001", "INT-0005", "INT-0006", "INT-0007"]
+  }
+}
