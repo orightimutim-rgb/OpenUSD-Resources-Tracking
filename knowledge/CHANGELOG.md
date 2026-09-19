@@ -6,7 +6,8 @@ Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
 
 What changed:
 
-- Recorded the owner’s GitHub Issue #1 approval/notification protocol as `knowledge/cursor-approval-protocol.md` and INT-0005.
+- Recorded the owner’s GitHub Issue #1 approval/notification protocol as `knowledge/cursor-approval-protocol.md` and INT-0010.
+- Numbering history: this rule was originally drafted as INT-0005 in PR #2; on 2026-09-19 the owner approved renumbering it to INT-0010 because main already uses INT-0005 for retrieval/write gating. No rule content was discarded.
 - Added non-destructive GitHub-side indexes for sources, architecture references, and unresolved issues.
 - Recorded a terminology consistency check for Simulator / Emulator / Digital Twin / HIL / Omniverse / OpenUSD / Physical AI / PhysX.
 - Checked candidate source URLs and logged stale or ambiguous links without rewriting claims.
