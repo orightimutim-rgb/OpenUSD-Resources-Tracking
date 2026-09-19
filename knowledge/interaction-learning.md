@@ -157,3 +157,42 @@ Maintenance implication:
 - Consolidation should detect near-duplicates, superseded rules, conflict clusters, stale response strategies, and rules that can be merged into a higher-level abstraction while preserving provenance.
 
 Status: ACTIVE_RULE
+
+## INT-0010 — Owner approval and GitHub notification protocol
+
+Version history:
+- Originally drafted in PR #2 as `INT-0005`.
+- Owner approved renumbering to `INT-0010` on 2026-09-19 because `main` already uses `INT-0005` for retrieval/write gating.
+- Rule content and intent are preserved; this renumbering resolves identifier collision without overwriting either history.
+
+Problem detection logic:
+- The repository owner designated GitHub Issue #1 and related pull requests as the communication channel with the Cursor Agent.
+- Routine GitHub-side maintenance can proceed, but several action types can silently overstep conversational judgment that ChatGPT / the owner still owns.
+
+Reusable rule:
+- Use GitHub Issue #1 and related pull requests as the owner↔Cursor communication bridge.
+- Before a destructive change, verification-status change, disputed-issue resolution, canonical-architecture change, publication of sensitive/contextual material, or broad refactor, post a GitHub comment beginning with `APPROVAL REQUIRED` and wait for explicit owner approval.
+- Routine reversible maintenance may proceed without approval when it stays within `AGENTS.md`, `.cursor/rules/github-sync-maintenance.mdc`, and `knowledge/sync-policy.md`.
+- After each meaningful maintenance batch, post a concise status comment covering what changed, what was not changed, any unresolved issue, and whether owner action is required.
+
+Assistant judgment summary:
+- This is an execution-boundary rule, not a technical-claim rule. Recording the protocol on GitHub is itself routine, reversible documentation.
+
+Uncertainty / risk:
+- “Canonical architecture” includes extracting ARCH records into new standalone files. Indexing existing names is allowed; materializing full architecture files is approval-gated.
+
+Response strategy:
+- Default to the smallest reversible GitHub-side edit.
+- INT-0005 owns the action/write gate; when that gate requires owner authorization, INT-0010 owns the approval handoff.
+- Routine, reversible Cursor writing inside the established maintenance scope may proceed without per-write approval.
+- Approval is scoped to the proposed gated action or explicitly defined batch, not blanket future authorization.
+- Pause only the dependent gated action; continue safe independent work when possible.
+- If gating or approval creates stale metadata, duplicated questions, dependency conflicts, or repeated manual burden, return the problem to the protocol/routing layer instead of assigning it to whoever appears more available.
+- Escalate with `APPROVAL REQUIRED` rather than guessing at verification, privacy, or architecture-file extraction.
+
+Sync checkpoint:
+- Protocol file: `knowledge/cursor-approval-protocol.md`
+- Communication channel: GitHub Issue #1 and related pull requests
+- Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
+
+Status: ACTIVE_RULE

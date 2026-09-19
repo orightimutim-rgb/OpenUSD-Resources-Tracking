@@ -37,13 +37,43 @@ Cursor should take over GitHub-side maintenance that does not require conversati
 
 Escalate these as a review item instead of silently deciding.
 
+## Owner communication and approval
+
+Preferred owner↔Cursor channel: GitHub Issue #1 and related pull requests.
+
+Full protocol: `knowledge/cursor-approval-protocol.md`
+
+Approval-gated actions require a GitHub comment beginning with `APPROVAL REQUIRED` and explicit owner approval before execution:
+- destructive changes
+- verification-status changes
+- disputed-issue resolution
+- canonical-architecture changes
+- publication of sensitive/contextual material
+- broad refactors
+
+Routine reversible GitHub-side maintenance may proceed without approval when it stays within this file, `.cursor/rules/github-sync-maintenance.mdc`, and `knowledge/sync-policy.md`.
+
+After each meaningful maintenance batch, post a concise status comment on Issue #1 or the corresponding pull request.
+
+### Cursor writing authorization
+
+- Routine, reversible GitHub-side writes are authorized when they remain inside the established maintenance scope and do not cross an INT-0005 action/write gate.
+- INT-0005 owns the gate decision.
+- INT-0010 owns the approval handoff when owner authorization is required.
+- Approval applies to the specific gated action or defined batch; it is not blanket authorization for unrelated future changes.
+- A blocked gate should stop only the dependent action. Continue safe independent work when possible.
+- If the protocol creates follow-on ambiguity, stale metadata, dependency conflicts, or repeated manual burden, return that problem to the protocol/routing layer instead of assigning it to whichever person or agent is more available.
+
 ## Required knowledge order before editing
 
 Read these first when relevant:
 1. `knowledge/sync-policy.md`
-2. `knowledge/interaction-learning.md`
-3. `knowledge/chat-sync-2026-09-15.md`
-4. architecture-reference files or source indexes present in the repository
+2. `knowledge/dynamic-context-principle.md`
+3. `knowledge/interaction-learning.md`
+4. `knowledge/interaction-trigger-policy.md`
+5. `knowledge/cursor-approval-protocol.md`
+6. `knowledge/chat-sync-2026-09-15.md`
+7. architecture-reference files or source indexes present in the repository (`knowledge/architecture-index.md`, `knowledge/source-index.md`, `knowledge/issue-index.md`)
 
 ## Synchronization principles
 
