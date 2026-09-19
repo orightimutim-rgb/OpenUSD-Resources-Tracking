@@ -59,11 +59,12 @@ After each meaningful maintenance batch, post a concise status comment on Issue 
 
 Read these first when relevant:
 1. `knowledge/sync-policy.md`
-2. `knowledge/interaction-learning.md`
-3. `knowledge/interaction-trigger-policy.md`
-4. `knowledge/cursor-approval-protocol.md`
-5. `knowledge/chat-sync-2026-09-15.md`
-6. architecture-reference files or source indexes present in the repository (`knowledge/architecture-index.md`, `knowledge/source-index.md`, `knowledge/issue-index.md`)
+2. `knowledge/dynamic-context-principle.md`
+3. `knowledge/interaction-learning.md`
+4. `knowledge/interaction-trigger-policy.md`
+5. `knowledge/cursor-approval-protocol.md`
+6. `knowledge/chat-sync-2026-09-15.md`
+7. architecture-reference files or source indexes present in the repository (`knowledge/architecture-index.md`, `knowledge/source-index.md`, `knowledge/issue-index.md`)
 
 ## Synchronization principles
 
