@@ -1,5 +1,17 @@
 # Knowledge Mirror Changelog
 
+## 2026-09-19 — PR #2 rebase resolved the INT-0005–INT-0007 drop risk
+
+Trigger classification: `UPDATE_EXISTING` (INT-0005 / INT-0010 map only). No new Interaction ID.
+
+What changed:
+- PR #2 was rebased onto current `main` and now keeps INT-0005–INT-0007 with INT-0010 appended.
+- `knowledge/interaction-id-map.md` no longer treats PR #2 as a drop-on-merge risk.
+
+What did not change:
+- INT-0008 collision (PRs #6/#7) remains `APPROVAL REQUIRED`.
+- PRs #3/#4/#5 catalog overlap is still owner-gated; none were closed.
+
 ## 2026-09-19 — Re-evaluate PRs #3–#9 after INT-0010 owner approval
 
 Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
@@ -25,7 +37,7 @@ What did not change:
 
 Unresolved / approval-gated:
 - PRs #6 and #7 both draft INT-0008 (near-duplicate context-escape). `APPROVAL REQUIRED` before assigning a canonical ID.
-- PR #2 must be rebased onto current `main` before merge, or INT-0005–INT-0007 would be dropped.
+- PR #2 rebase onto current `main` later resolved the INT-0005–INT-0007 drop risk (see the 2026-09-19 follow-up entry).
 
 ## 2026-09-15 — Align GitHub-side Interaction retrieval with retrieve-vs-write and INT-0006
 

@@ -27,7 +27,7 @@
       "title": "Owner approval and GitHub notification protocol",
       "status": "OWNER_APPROVED",
       "source_prs": [2],
-      "note": "Originally drafted as INT-0005 in PR #2; owner renumbered to INT-0010 on 2026-09-19. Pending rebase/merge onto current main."
+      "note": "Originally drafted as INT-0005 in PR #2; owner renumbered to INT-0010 on 2026-09-19. Branch rebased onto current main (INT-0005–INT-0007 preserved). Pending merge."
     }
   ],
   "rules": [

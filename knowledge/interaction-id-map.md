@@ -27,7 +27,7 @@ Owner decision (2026-09-19, PR #2):
 | --- | --- | --- | --- |
 | INT-0008 | Context-escape / dual-source retrieval | PR #6 and PR #7 | `REVIEW_CONFLICT` — both drafts use INT-0008; near-duplicate; do not silently pick a winner |
 | INT-0009 | Active agency / control loop | PR #8 | Unique vs INT-0010; still pending merge |
-| INT-0010 | Owner approval and GitHub notification protocol | PR #2 | `OWNER_APPROVED` numbering; pending rebase/merge onto current `main` |
+| INT-0010 | Owner approval and GitHub notification protocol | PR #2 | `OWNER_APPROVED` numbering; **rebased onto current `main`** (INT-0005–INT-0007 preserved). Pending merge. |
 
 ## Open PR re-evaluation (PRs #3–#9)
 
@@ -43,8 +43,8 @@ Owner decision (2026-09-19, PR #2):
 
 ## Merge risks (do not ignore)
 
-- PR #2 currently bases `knowledge/interaction-learning.md` on an older snapshot (INT-0001–INT-0004 + INT-0010). Merging it without rebase would drop INT-0005, INT-0006, and INT-0007. Rebase onto current `main` first.
-- PR #3 and PR #4 overlap PR #5 on `knowledge/interaction-index.json` and `scripts/interaction_trigger.py`. Merge at most one catalog/helper lineage, or rebase the later helper onto the earlier one.
+- PR #2 rebase (2026-09-19): `knowledge/interaction-learning.md` now keeps INT-0005–INT-0007 and appends INT-0010. The earlier drop-on-merge risk is resolved. A parallel stack review lives on PR #2 as `knowledge/pr-stack-review-2026-09-19.md`; this map is not a second Interaction rule.
+- PR #3, PR #4, and PR #5 overlap on `knowledge/interaction-index.json` and `scripts/interaction_trigger.py`. Merge at most one catalog/helper lineage. Choosing a survivor is owner-gated; this batch does not close any of those PRs.
 - PR #6 and PR #7 are a numbering collision and a near-duplicate rule. That is `APPROVAL REQUIRED`, not a silent ID reassignment.
 
 ## What this batch does not do
