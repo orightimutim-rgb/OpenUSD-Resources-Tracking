@@ -25,9 +25,9 @@ What did not change:
 - Canonical Stage 0 outcomes were not rewritten.
 - No Airtable write was executed from this GitHub-side batch.
 - Historical INT-0001–INT-0007 rule text was not replaced.
-- Open PR #2's drafted INT-0005 numbering collision remains `APPROVAL REQUIRED`.
+- INT-0005 numbering collision with PR #2 is resolved (2026-09-19): approval protocol is INT-0010.
 
 Unresolved / approval-gated:
-- Open PR #2 drafts a different INT-0005 (approval protocol) while `main` already uses INT-0005 for retrieval/write gating.
+- INT-0008 still overlaps PR #7; owner choice required before merge.
 - Open PRs #3–#5 operationalize earlier INT layers and overlap helper/catalog files; treat as a rebase cluster, not a silent close.
 - INT-0006 / INT-0007 / INT-0008 remain related distinct layers, not a merge.
