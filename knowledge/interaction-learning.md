@@ -183,6 +183,11 @@ Uncertainty / risk:
 
 Response strategy:
 - Default to the smallest reversible GitHub-side edit.
+- INT-0005 owns the action/write gate; when that gate requires owner authorization, INT-0010 owns the approval handoff.
+- Routine, reversible Cursor writing inside the established maintenance scope may proceed without per-write approval.
+- Approval is scoped to the proposed gated action or explicitly defined batch, not blanket future authorization.
+- Pause only the dependent gated action; continue safe independent work when possible.
+- If gating or approval creates stale metadata, duplicated questions, dependency conflicts, or repeated manual burden, return the problem to the protocol/routing layer instead of assigning it to whoever appears more available.
 - Escalate with `APPROVAL REQUIRED` rather than guessing at verification, privacy, or architecture-file extraction.
 
 Sync checkpoint:
