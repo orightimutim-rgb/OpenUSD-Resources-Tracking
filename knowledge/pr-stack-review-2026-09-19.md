@@ -7,7 +7,7 @@ Owner decision recorded on PR #2:
 - Keep `main` `INT-0005` for retrieval/write gating.
 - Renumber PR #2 approval/notification protocol to `INT-0010`.
 - Re-evaluate PRs #3–#9 against that numbering before merging overlapping work.
-- The INT-0005 numbering collision is **resolved**. Remaining stale “collision remains / PR #2 should rebase” wording on PRs #3/#5/#6/#7/#8 is metadata-only cleanup, not a new numbering decision.
+- The INT-0005 numbering collision is **resolved**. Metadata-only cleanup of stale “collision remains / PR #2 should rebase” wording was applied on PRs #3/#5/#6/#7/#8.
 - `knowledge/dynamic-context-principle.md` is an upper-level operating principle, not a new INT ID.
 
 ## Canonical INT IDs after this PR

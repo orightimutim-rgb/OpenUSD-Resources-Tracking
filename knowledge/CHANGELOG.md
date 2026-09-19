@@ -49,3 +49,4 @@ What was not changed:
 
 - INT-0008 overlap between PRs #6 and #7 remains an owner choice.
 - ARCH-0001–ARCH-0005 extraction remains approval-gated.
+- Metadata-only cleanup on PRs #3/#5/#6/#7/#8 marked the INT-0005 collision as resolved; those PRs were not rebased or merged.
