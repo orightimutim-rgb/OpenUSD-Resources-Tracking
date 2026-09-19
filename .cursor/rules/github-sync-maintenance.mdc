@@ -67,6 +67,18 @@ Routine reversible maintenance may proceed without approval when it stays within
 
 After each meaningful maintenance batch, post a concise status comment covering what changed, what was not changed, any unresolved issue, and whether owner action is required.
 
+## Cursor writing authorization
+
+Use INT-0005 as the action/write gate and INT-0010 as the owner-approval handoff.
+
+- Proceed with routine, reversible writes inside the established maintenance scope.
+- When INT-0005 marks an action as owner-gated, create the INT-0010 `APPROVAL REQUIRED` request and pause only that dependent action.
+- Approval is scoped to the proposed action or explicitly defined batch.
+- Do not infer blanket authorization for unrelated future writes.
+- Continue independent safe work while a gated dependency waits.
+- When the approval protocol itself creates stale state, duplicated questions, dependency conflicts, or routing ambiguity, repair or escalate the protocol path. Do not convert protocol defects into recurring manual workload for the owner, ChatGPT, or Cursor.
+- Workload or availability is not a decision criterion for ownership of a protocol-derived problem.
+
 ## Escalation
 
 Create or update a GitHub issue instead of deciding silently when:
