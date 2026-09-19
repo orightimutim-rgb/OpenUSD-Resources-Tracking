@@ -51,11 +51,20 @@ These may be represented only as de-identified abstract layers when relevant to 
 
 ## Interaction-learning rule
 
+Canonical routing spec: `knowledge/interaction-trigger-policy.md`.
+
+Automatic retrieval and Interaction persistence are separate. Retrieve broadly when prior rules or structural observations could change the response. Write conservatively. Retrieval alone must not create a record.
+
 For recurring problem types such as missing sources, architecture gaps, duplicate records, synchronization ambiguity, vendor mapping, and issue handling:
+- classify the event before writing Interaction Learning
 - search the interaction-learning layer first
+- interpret ordinary-language structural observations without requiring technical translation
 - reuse prior decision rules when still applicable
-- create a new version when the new case conflicts with an older rule
+- prefer update/versioning over creating a near-duplicate
+- when writing, preserve earlier rule states additively/versioned
+- create a review item when the new case conflicts with an older rule
 - retain the user's validation/correction as part of the rule history
+- do not create an Interaction entry for every conversation or repository event
 
 ## Conflict handling
 

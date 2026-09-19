@@ -41,9 +41,10 @@ Escalate these as a review item instead of silently deciding.
 
 Read these first when relevant:
 1. `knowledge/sync-policy.md`
-2. `knowledge/interaction-learning.md`
-3. `knowledge/chat-sync-2026-09-15.md`
-4. architecture-reference files or source indexes present in the repository
+2. `knowledge/interaction-trigger-policy.md`
+3. `knowledge/interaction-learning.md`
+4. `knowledge/chat-sync-2026-09-15.md`
+5. architecture-reference files or source indexes present in the repository
 
 ## Synchronization principles
 
@@ -58,14 +59,27 @@ Read these first when relevant:
 
 ## Interaction-learning rule
 
-When a recurring repository problem appears, record the reusable maintenance rule, not only the fix. Track:
+Canonical routing spec: `knowledge/interaction-trigger-policy.md`.
+
+For each meaningful maintenance event, classify first:
+- `NO_INTERACTION_ACTION`
+- `RETRIEVE_ONLY`
+- `UPDATE_EXISTING`
+- `CREATE_NEW`
+- `REVIEW_CONFLICT`
+
+Retrieve similar Interaction rules before deciding to write. Automatic retrieval must not create Interaction records. Prefer update/versioning over near-duplicates. When a write is justified, preserve history additively/versioned rather than overwriting prior rule states.
+
+Interpret the user's ordinary-language observations structurally (missing parts, hierarchy, ordering, links, duplication, dependencies, handoffs, boundaries, synchronization) even when no technical terminology is used. Do not require the user to translate those observations into code or schema terms before retrieval/review.
+
+When a recurring repository problem appears and the write gate is satisfied, record the reusable maintenance rule, not only the fix. Track:
 - detected pattern
 - evidence
 - action
 - unresolved uncertainty
 - next-time handling
 
-Do not attempt to reproduce hidden chain-of-thought. Store only concise, reviewable reasoning summaries and decision criteria.
+Do not attempt to reproduce hidden chain-of-thought. Store only concise, reviewable reasoning summaries and decision criteria. Flag conflicts as `APPROVAL REQUIRED` rather than silently rewriting history.
 
 ## Working style
 

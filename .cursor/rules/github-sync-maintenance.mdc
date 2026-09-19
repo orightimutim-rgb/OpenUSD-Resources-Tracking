@@ -21,7 +21,9 @@ Allowed outcomes:
 - `CREATE_NEW`
 - `REVIEW_CONFLICT`
 
-Do not create a new Interaction entry by default. Prefer retrieval-only when an existing rule already covers the case. Prefer update/versioning over creating near-duplicate Interaction entries.
+Do not create a new Interaction entry by default. Automatic retrieval MUST NOT create Interaction records. Prefer retrieval-only when an existing rule already covers the case. Prefer additive update/versioning over creating near-duplicate Interaction entries or overwriting prior rule states.
+
+Interpret ordinary-language observations structurally (missing parts, hierarchy, ordering, links, duplication, dependencies, handoffs, boundaries, synchronization) even when the user does not use technical terminology.
 
 ## Responsibilities
 
@@ -68,9 +70,9 @@ Use `knowledge/interaction-learning.md` to avoid repeating known workflow mistak
 When maintenance reveals a reusable pattern:
 1. search for a similar Interaction first
 2. if already covered, do not create a new entry
-3. if scope changes, update/version the existing rule
+3. if scope changes, update/version the existing rule additively
 4. if genuinely new, create a new concise Interaction summary
-5. if conflicting, open review instead of overwriting
+5. if conflicting, open review with `APPROVAL REQUIRED` instead of overwriting history
 
 Record only concise decision summaries covering detection, decision basis, action, uncertainty, user/maintainer validation, and next-time handling.
 
