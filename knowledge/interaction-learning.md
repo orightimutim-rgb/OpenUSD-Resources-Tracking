@@ -136,7 +136,7 @@ Version note (2026-09-15 GitHub operationalization):
 - This batch does not create a new Interaction ID; INT-0005 already covers the routing layer.
 
 Uncertainty / risk:
-- Open pull request #2 drafts a different rule also numbered INT-0005 (owner approval/notification protocol). That is a numbering collision, not a merge of the two rules. INT-0005 on `main` remains the retrieval-trigger rule. PR #2 should rebase and assign a new ID to the approval-protocol rule.
+- Resolved 2026-09-19: owner approved keeping `main` INT-0005 for retrieval/write gating and numbered the PR #2 approval protocol INT-0010. The earlier collision note is retained for provenance only; PR #2 no longer needs a numbering rebase for this issue.
 - Token-overlap retrieval in `scripts/interaction_trigger.py` is an implementation aid, not a replacement for the canonical policy. A different similarity heuristic would be a high-impact policy change and needs owner approval.
 
 Retrieval tags: trigger-router, retrieve-before-write, write-gate, no-log-every-event, classification

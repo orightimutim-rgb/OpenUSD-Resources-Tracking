@@ -24,4 +24,4 @@ What did not change:
 - No Airtable write was executed from this GitHub-side batch.
 
 Unresolved:
-- Open PR #2 drafts a different INT-0005 (approval protocol). Numbering collision remains for rebase; not silently merged.
+- INT-0005 numbering collision with PR #2 is resolved (2026-09-19): approval protocol is INT-0010. Historical collision note retained for provenance.
