@@ -32,9 +32,9 @@ What did not change:
 - ISSUE-0001–ISSUE-0010 remain unresolved.
 - Canonical Stage 0 outcomes were not rewritten.
 - No Airtable write was executed from this GitHub-side batch.
-- Open PR #2's drafted INT-0005 (owner approval protocol) was not reassigned or overwritten.
+- Open PR #2's approval protocol is now INT-0010 (owner approval 2026-09-19). The earlier INT-0005 collision note is provenance only.
 - Open PRs #3 and #4 were not silently closed.
 
 Unresolved / approval-gated:
-- Open PR #2 drafts a different INT-0005 (approval protocol) while `main` already uses INT-0005 for the retrieval-trigger rule. Numbering collision remains `APPROVAL REQUIRED`; not silently merged.
+- INT-0005 numbering collision with PR #2 is resolved (INT-0010). Remaining overlap among PRs #3/#4/#5 is tooling, not numbering.
 - INT-0004 / INT-0005 / INT-0006 / INT-0007 remain a related cluster, not a merge.

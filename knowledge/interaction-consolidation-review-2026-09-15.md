@@ -23,13 +23,11 @@ Cadence: high-change period on 2026-09-15, so a consolidation pass is appropriat
 
 ## Review candidates
 
-### APPROVAL REQUIRED — REV-INT-0005-NUMBERING
+### RESOLVED — REV-INT-0005-NUMBERING (2026-09-19)
 
-- Proposed action: do not silently merge or re-number PR #2's approval-protocol rule
-- Files/records affected: PR #2 `knowledge/interaction-learning.md` INT-0005 vs `main` INT-0005
-- Reason: `main` already uses INT-0005 for retrieval/write gating; PR #2 drafts a different INT-0005 for the owner approval/notification protocol
-- Risk / uncertainty: silently assigning a later INT ID, or overwriting either text, would rewrite history without owner choice
-- Exact change intended after approval: rebase PR #2 and give the approval-protocol rule a new unused INT ID, preserving both rule histories
+- Owner approved keeping `main` INT-0005 for retrieval/write gating.
+- PR #2 approval protocol is INT-0010; histories were preserved.
+- This review candidate is closed. It is not a remaining approval gate.
 
 ### REVIEW_CANDIDATE — REV-INT-0004-0005-0007-CLUSTER
 
