@@ -21,7 +21,7 @@ Trigger classification for this batch: `UPDATE_EXISTING` (INT-0005 numbering), w
 Retrieved before writing:
 - Owner approval on PR #2 keeps `main` INT-0005 for retrieval/write gating and assigns INT-0010 to the approval protocol.
 - INT-0003: do not create a near-duplicate Interaction ID for this numbering event.
-- INT-0007: adjacent merge risk is that PR #2 still omits INT-0005–INT-0007 unless rebased.
+- INT-0007: adjacent merge risk was that PR #2 still omitted INT-0005–INT-0007 unless rebased (later resolved by the PR #2 rebase).
 
 What changed:
 - Merged current `main` (INT-0007 + optimization policy) into this branch without replacing INT-0005/INT-0006 notes.
@@ -63,7 +63,7 @@ What did not change:
 - ISSUE-0001–ISSUE-0010 remain unresolved.
 - Canonical Stage 0 outcomes were not rewritten.
 - No Airtable write was executed from this GitHub-side batch.
-- Open PR #2's drafted INT-0005 (owner approval protocol) was not reassigned or overwritten.
+- Open PR #2's approval-protocol draft was not reassigned or overwritten in this 2026-09-15 batch.
 
-Unresolved / approval-gated:
-- Open PR #2 drafts a different INT-0005 (approval protocol) while `main` already uses INT-0005 for the retrieval-trigger rule. Numbering collision remains `APPROVAL REQUIRED`; not silently merged.
+Unresolved at the time of this batch (later resolved 2026-09-19):
+- PR #2 originally drafted the approval protocol as INT-0005. Owner approval on 2026-09-19 kept `main` INT-0005 for retrieval/write gating and numbered the protocol INT-0010.
