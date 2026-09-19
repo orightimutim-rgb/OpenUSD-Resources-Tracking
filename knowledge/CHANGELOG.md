@@ -39,5 +39,5 @@ What did not change:
 - Unmerged PRs #2–#7 were not silently merged, closed, or reassigned.
 
 Unresolved / approval-gated:
-- Open PR #2 drafts a different INT-0005 (approval protocol) while `main` already uses INT-0005 for the retrieval-trigger rule. Numbering collision remains `APPROVAL REQUIRED`.
+- INT-0005 numbering collision with PR #2 is resolved (2026-09-19): approval protocol is INT-0010.
 - Unmerged PRs #6/#7 already draft INT-0008 (context-escape). This branch uses INT-0009 rather than colliding with that ID. Rebase should keep INT-0008 and INT-0009 distinct related layers.
