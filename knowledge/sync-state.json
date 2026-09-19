@@ -10,6 +10,7 @@
     "chat_turn_sync": "same-turn when the user adds or updates knowledge in this conversation",
     "interaction_trigger": "classify first using knowledge/interaction-trigger-policy.md; retrieve similar INT rules before any Interaction write; retrieval does not persist",
     "interaction_catalog": "knowledge/interaction-index.json",
+    "interaction_id_map": "knowledge/interaction-id-map.md",
     "interaction_write_policy": "retrieve broadly, write conservatively, additive versioned history",
     "targets": ["Airtable", "GitHub"],
     "issue_policy": "log immediately, adjudicate after database body is complete",

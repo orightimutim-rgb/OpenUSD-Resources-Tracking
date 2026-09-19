@@ -337,7 +337,18 @@ def cmd_self_test() -> int:
             "INT-0005",
             {"UPDATE_EXISTING", "RETRIEVE_ONLY"},
         ),
+        (
+            "After one structural correction, scan adjacent gaps and return one compact batch instead of serial micro-decisions",
+            "INT-0007",
+            {"RETRIEVE_ONLY", "UPDATE_EXISTING"},
+        ),
     ]
+
+    reserved_ids = [item.get("id") for item in catalog.get("reserved_ids", [])]
+    if "INT-0010" not in reserved_ids:
+        failures.append("reserved_ids must include owner-approved INT-0010")
+    if "INT-0008" not in reserved_ids:
+        failures.append("reserved_ids must include colliding draft INT-0008")
 
     for event, expected_id, allowed_actions in cases:
         decision = classify(event)

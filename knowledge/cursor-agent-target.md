@@ -32,4 +32,5 @@ The repository can store and propagate the Cursor Agent target, but GitHub alone
 - `knowledge/interaction-trigger-policy.md`
 - `knowledge/interaction-learning.md`
 - `knowledge/interaction-index.json`
+- `knowledge/interaction-id-map.md`
 - GitHub Issue #1

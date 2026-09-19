@@ -6,6 +6,30 @@
   "retrieval_does_not_persist": true,
   "write_policy": "retrieve broadly, write conservatively, additive versioned history",
   "history_policy": "When a write is justified, append or version; do not destructively overwrite prior rule states.",
+  "id_map": "knowledge/interaction-id-map.md",
+  "reserved_ids": [
+    {
+      "id": "INT-0008",
+      "title": "Context-escape / dual-source retrieval (draft)",
+      "status": "REVIEW_CONFLICT",
+      "source_prs": [6, 7],
+      "note": "PRs #6 and #7 both draft INT-0008 as near-duplicate context-escape rules. APPROVAL REQUIRED before assigning a canonical ID."
+    },
+    {
+      "id": "INT-0009",
+      "title": "Active agency / control loop (draft)",
+      "status": "PENDING_MERGE",
+      "source_prs": [8],
+      "note": "Numbering does not collide with INT-0010. Do not silently reassign INT-0008 from PRs #6/#7."
+    },
+    {
+      "id": "INT-0010",
+      "title": "Owner approval and GitHub notification protocol",
+      "status": "OWNER_APPROVED",
+      "source_prs": [2],
+      "note": "Originally drafted as INT-0005 in PR #2; owner renumbered to INT-0010 on 2026-09-19. Pending rebase/merge onto current main."
+    }
+  ],
   "rules": [
     {
       "id": "INT-0001",
@@ -171,6 +195,10 @@
         {
           "date": "2026-09-15",
           "note": "Canonical routing layer: retrieve broadly, write conservatively; retrieval is not persistence."
+        },
+        {
+          "date": "2026-09-19",
+          "note": "Owner kept INT-0005 for retrieval/write gating. Approval/notification protocol is INT-0010 (PR #2), not a second INT-0005."
         }
       ]
     },
@@ -227,6 +255,46 @@
         {
           "date": "2026-09-15",
           "note": "Canonical structure-first rule: natural-language structural observations trigger retrieval/review without technical translation."
+        }
+      ]
+    },
+    {
+      "id": "INT-0007",
+      "title": "Proactive synthesis instead of toothpaste-style interaction",
+      "status": "ACTIVE_RULE",
+      "default_trigger_action": "RETRIEVE_ONLY",
+      "related_rules": ["INT-0005", "INT-0006"],
+      "problem_types": [
+        "serial micro-decisions",
+        "toothpaste-style interaction",
+        "missing forward-scan",
+        "additive history needing consolidation"
+      ],
+      "prompt_patterns": [
+        "one point then another fix",
+        "adjacent structural issue",
+        "scan surrounding workflow",
+        "bundle the next questions"
+      ],
+      "structural_signals": [
+        "dependencies",
+        "ordering",
+        "handoffs",
+        "missing parts"
+      ],
+      "tags": [
+        "forward-scan",
+        "proactive-synthesis",
+        "consolidation",
+        "batch-decision",
+        "adjacent-gaps"
+      ],
+      "reusable_rule": "When a structural correction is detected, perform a local forward-scan and return a compact batch: current issue, adjacent issues, combined change, what should remain unchanged, and review candidates.",
+      "response_strategy": "Prefer one compact batch over serial micro-decisions. Do not persist from the scan itself.",
+      "versions": [
+        {
+          "date": "2026-09-15",
+          "note": "Canonical proactive-synthesis / consolidation rule on main."
         }
       ]
     }

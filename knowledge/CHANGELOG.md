@@ -1,5 +1,32 @@
 # Knowledge Mirror Changelog
 
+## 2026-09-19 — Re-evaluate PRs #3–#9 after INT-0010 owner approval
+
+Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
+
+Trigger classification for this batch: `UPDATE_EXISTING` (INT-0005 numbering), with retrieval of INT-0003 / INT-0007.
+
+Retrieved before writing:
+- Owner approval on PR #2 keeps `main` INT-0005 for retrieval/write gating and assigns INT-0010 to the approval protocol.
+- INT-0003: do not create a near-duplicate Interaction ID for this numbering event.
+- INT-0007: adjacent merge risk is that PR #2 still omits INT-0005–INT-0007 unless rebased.
+
+What changed:
+- Merged current `main` (INT-0007 + optimization policy) into this branch without replacing INT-0005/INT-0006 notes.
+- Added `knowledge/interaction-id-map.md` for PRs #3–#9.
+- Catalog now indexes INT-0001–INT-0007 and reserves INT-0008 / INT-0009 / INT-0010 without copying unmerged rule bodies.
+
+What did not change:
+- No new Interaction ID.
+- ISSUE-0001–ISSUE-0010 remain unresolved.
+- PRs #3–#9 were not closed or rewritten.
+- Claim verification status was not changed.
+- No Airtable write.
+
+Unresolved / approval-gated:
+- PRs #6 and #7 both draft INT-0008 (near-duplicate context-escape). `APPROVAL REQUIRED` before assigning a canonical ID.
+- PR #2 must be rebased onto current `main` before merge, or INT-0005–INT-0007 would be dropped.
+
 ## 2026-09-15 — Align GitHub-side Interaction retrieval with retrieve-vs-write and INT-0006
 
 Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
