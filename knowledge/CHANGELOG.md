@@ -50,3 +50,15 @@ What was not changed:
 - INT-0008 overlap between PRs #6 and #7 remains an owner choice.
 - ARCH-0001–ARCH-0005 extraction remains approval-gated.
 - Metadata-only cleanup on PRs #3/#5/#6/#7/#8 marked the INT-0005 collision as resolved; those PRs were not rebased or merged.
+
+## 2026-09-19 — Cursor writing authorization (owner-authored)
+
+What changed:
+
+- Owner bound INT-0005 as the action/write gate and INT-0010 as the scoped approval handoff.
+- Routine reversible GitHub-side writes inside maintenance scope may proceed without per-write approval.
+- Protocol-derived problems (stale metadata, duplicate gates, dependency conflicts) stay on the protocol/routing layer.
+
+What was not changed:
+
+- No merge, PR close, ARCH extraction, verification-status change, or INT-0008 resolution.
