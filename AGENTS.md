@@ -55,6 +55,15 @@ Routine reversible GitHub-side maintenance may proceed without approval when it 
 
 After each meaningful maintenance batch, post a concise status comment on Issue #1 or the corresponding pull request.
 
+### Cursor writing authorization
+
+- Routine, reversible GitHub-side writes are authorized when they remain inside the established maintenance scope and do not cross an INT-0005 action/write gate.
+- INT-0005 owns the gate decision.
+- INT-0010 owns the approval handoff when owner authorization is required.
+- Approval applies to the specific gated action or defined batch; it is not blanket authorization for unrelated future changes.
+- A blocked gate should stop only the dependent action. Continue safe independent work when possible.
+- If the protocol creates follow-on ambiguity, stale metadata, dependency conflicts, or repeated manual burden, return that problem to the protocol/routing layer instead of assigning it to whichever person or agent is more available.
+
 ## Required knowledge order before editing
 
 Read these first when relevant:
