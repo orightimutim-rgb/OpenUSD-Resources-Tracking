@@ -53,6 +53,9 @@ What changed:
 
 - Rebased PR #9 onto PR #2 so this changelog and the source/architecture indexes compose.
 - Keep `main` INT-0005 (retrieval/write gating). Approval protocol remains INT-0010 on PR #2. This PR still creates no Interaction ID.
+- Source index: Omniverse Developer row is an entry node (`Partial`) pointing at `knowledge/omniverse-developer-portal-tree.md`.
+- Architecture index: the portal tree expands ARCH-0003 evidence; it does not extract ARCH files.
+- Issue index: added ISSUE-GH-008 for the live Warp Learn More URL coinciding with Newton.
 
 What was not changed:
 

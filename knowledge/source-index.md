@@ -22,7 +22,7 @@ Category reminder:
 | DJI Flight Simulator historical product / end-of-support information | https://www.dji.com/downloads/products/dji-flight-simulator | 404 | Snapshot already treats this product as historical. Do not substitute DJI Virtual Flight or DJI Simulator without owner/Airtable confirmation; those are different product names. |
 | Simulator.io | https://simulator.io/ | 200 | Product homepage reachable. |
 | NVIDIA Omniverse official page | https://www.nvidia.com/en-us/omniverse/ | 200 | Vendor product page. |
-| NVIDIA Omniverse Developer | https://developer.nvidia.com/omniverse | 200 | Vendor developer page. |
+| NVIDIA Omniverse Developer | https://developer.nvidia.com/omniverse | 200 | Existing named source. **Entry node, not completion** (Partial). Linked first-level tree: `knowledge/omniverse-developer-portal-tree.md`. Do not duplicate this source. Keep distinct from the Omniverse commercial page. |
 | NVIDIA OpenUSD for Developers | https://developer.nvidia.com/openusd | 200 | `https://developer.nvidia.com/usd` redirected here. |
 | NVIDIA PhysX SDK | https://developer.nvidia.com/physx-sdk | 200 | Also related: https://github.com/NVIDIA-Omniverse/PhysX (200). Source vs ARCH-0005 distinction remains: source page ≠ architecture node. |
 | NVIDIA Design & Simulation | previously expected: https://www.nvidia.com/en-us/omniverse/solutions/design-and-simulation/ | 404 | Stale candidate URL. No equivalent replacement was confirmed in this pass. Leave mapped to the snapshot name only. |
@@ -53,3 +53,4 @@ Checker-limited:
 - It does not invent `SRC-0011`–`SRC-0016`.
 - It does not collapse DJI Flight Simulator, DJI Virtual Flight, and DJI Simulator.
 - It does not treat NVIDIA glossary wording as a universal industry definition.
+- It does not mark the Omniverse Developer root fully learned while linked branches remain unread.

@@ -32,6 +32,7 @@ These are repository-structure findings. They do not resolve or replace the snap
 | ISSUE-GH-005 | stale source | NVIDIA Synthetic Data glossary URL as named in the snapshot returned 404; a nearby “synthetic data generation” glossary is live. | Confirm whether the nearby page is the same source. |
 | ISSUE-GH-006 | missing relationship / duplicate-risk | README still describes a full OpenUSD resource-tracking corpus, while GitHub currently contains the knowledge-mirror subset only. | Decide whether README should describe the current mirror scope. |
 | ISSUE-GH-007 | duplicate | PRs #6 and #7 both create INT-0008 with near-duplicate context-escape rules. | Owner chooses one INT-0008 text; keep #7 deep-dives separately. See `knowledge/pr-stack-review-2026-09-19.md`. |
+| ISSUE-GH-008 | stale source / vendor page defect | On the live Omniverse Developer portal, NVIDIA Warp “Learn More” currently points at the Newton URL. | Do not merge Warp into Newton. Confirm whether the live card is a page defect or an alias. |
 
 ## Explicitly not resolved
 
