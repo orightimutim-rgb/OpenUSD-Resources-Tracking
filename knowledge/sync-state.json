@@ -11,6 +11,7 @@
     "architecture_index": "knowledge/architecture-index.md",
     "issue_index": "knowledge/issue-index.md",
     "terminology_check": "knowledge/terminology-check-2026-09-15.md",
+    "pr_stack_review": "knowledge/pr-stack-review-2026-09-19.md",
     "note": "SRC and ISSUE IDs listed above have no confirmed title map on GitHub; see ISSUE-GH-001 and ISSUE-GH-003"
   },
   "cursor_agent": {

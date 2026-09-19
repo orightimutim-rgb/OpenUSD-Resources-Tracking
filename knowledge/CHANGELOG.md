@@ -24,3 +24,16 @@ Unresolved:
 
 - ISSUE-0001–ISSUE-0010 remain open.
 - ISSUE-GH-001–ISSUE-GH-006 are new review items.
+- ISSUE-GH-007: PRs #6 and #7 both draft INT-0008; owner choice required before merge.
+
+## 2026-09-19 — Rebase onto main after INT-0010 approval
+
+What changed:
+
+- Rebased this branch onto current `main` so INT-0005/INT-0006/INT-0007 remain in place and the approval protocol stays INT-0010.
+- Added `knowledge/pr-stack-review-2026-09-19.md` for PRs #3–#9. No overlapping PR was merged.
+
+What was not changed:
+
+- INT-0008 was not assigned; PRs #6 and #7 still collide.
+- PRs #3–#9 were not rebased or closed from this branch.
