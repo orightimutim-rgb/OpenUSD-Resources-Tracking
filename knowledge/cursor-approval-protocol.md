@@ -58,4 +58,5 @@ If owner approval is needed, leave the request open and wait for an explicit app
 - `.cursor/rules/github-sync-maintenance.mdc`
 - `knowledge/sync-policy.md`
 - `knowledge/interaction-learning.md` (INT-0010; originally drafted as INT-0005 in PR #2, renumbered by owner approval to resolve the collision with main)
+- `knowledge/dynamic-context-principle.md` (upper-level operating principle; not a new INT ID)
 - `knowledge/cursor-agent-target.md`

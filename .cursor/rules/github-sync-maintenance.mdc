@@ -8,7 +8,7 @@ alwaysApply: true
 Designated Cursor Agent ID: `bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
 Designated Cursor Agent URL: `https://cursor.com/agents/bc-01a0a3a4-ff95-7e51-bfd5-9a61684aa081`
 
-Before modifying repository knowledge, read `AGENTS.md`, `knowledge/sync-policy.md`, and `knowledge/interaction-trigger-policy.md`.
+Before modifying repository knowledge, read `AGENTS.md`, `knowledge/sync-policy.md`, `knowledge/dynamic-context-principle.md`, and `knowledge/interaction-trigger-policy.md`.
 
 ## Mandatory pre-action trigger
 

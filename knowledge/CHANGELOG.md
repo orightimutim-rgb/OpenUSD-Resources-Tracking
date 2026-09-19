@@ -37,3 +37,15 @@ What was not changed:
 
 - INT-0008 was not assigned; PRs #6 and #7 still collide.
 - PRs #3–#9 were not rebased or closed from this branch.
+
+## 2026-09-19 — Dynamic context principle (owner-authored)
+
+What changed:
+
+- Owner added `knowledge/dynamic-context-principle.md` and placed it in the Cursor reading order. No new INT ID.
+- Linked the principle from the approval protocol and maintenance rule so agents retrieve it before creating structure.
+
+What was not changed:
+
+- INT-0008 overlap between PRs #6 and #7 remains an owner choice.
+- ARCH-0001–ARCH-0005 extraction remains approval-gated.
